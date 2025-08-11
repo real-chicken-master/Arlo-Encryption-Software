@@ -6,15 +6,13 @@
  * @version (a version number or a date)
  */
 public class encrypt
-{
-    public  String test = encrypt("this is a test");
+{ 
+    public  byte[] test = encrypt("this is a test");
     /**
      * Constructor for objects of class encrypt
      */
     public encrypt()
     {
-        // initialise instance variables
-        System.out.println(test);
     }
 
     /**
@@ -23,21 +21,20 @@ public class encrypt
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    private String encrypt(String input)
+    private byte[] encrypt(String input)
     {
-        String output = encryptSwap(input);
-        output = encryptRotate(output);
-        output = encryptNumber(output);
-        return output;
+        String output = input;
+        System.out.println(output);
+        output = encryptSwap(output);
+        System.out.println(output);
+        output = encryptRotate(output); 
+        System.out.println(output);
+        System.out.println(encryptBytes(output));
+        return encryptBytes(output);
     }
 
-    private String encryptNumber(String input) {
-        char[] myArray = input.toCharArray();
-        char placeholder1 = ' ';
-        String output = "";
-        for(int num = 0; num < myArray.length;num++){
-            output += (int)myArray[num];
-        }
+    private byte[] encryptBytes(String input) {
+        byte[] output = input.getBytes();
         return output;
     }
 

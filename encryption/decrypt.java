@@ -16,43 +16,38 @@ public class decrypt extends encrypt
     {
         // initialise instance variables
         String temp = decrypt(test);
-        System.out.println(temp);
     }
 
-    private String decrypt(String input)
+    private String decrypt(byte[] input)
     {
-        String output = encryptChar(input);
-        // output = encryptRotate(output);
-        // output = encryptSwap(output);
+        String output = decryptByte(input);
+        System.out.println(output);
+        output = decryptRotate(output);
+        System.out.println(output);
+        output = decryptSwap(output);
+        System.out.println(output);
         return output;
     }
 
-    private String encryptChar(String input) {
-        char[] tempArray = input.toCharArray();
-        int[] myArray = {1,1};
-        for(int num = 0; num < myArray.length;num++){
-          
-        }
-        char placeholder1 = ' ';
+    private String decryptByte(byte[] input) {
         String output = "";
-        for(int num = 0; num < myArray.length;num++){
-            output += (char)myArray[num];
+        for(int num = 0; num < input.length;num++){
+            output += (char)input[num];
         }
         return output;
     }
 
-    private String encryptSwap(String input) {
+    private String decryptSwap(String input) {
         char[] myArray = input.toCharArray();
         char placeholder1 = ' ';
         char placeholder2 = ' ';
-        char char1 = myArray[0];
-        for(int num = 0; num < myArray.length;num++){
-            if(num < myArray.length-1){
-                if(num%2 == 0){
-                    placeholder1 = myArray[num+1];
+        for(int num = myArray.length-1; num > 0 ;num--){
+            if(num > 1){
+                if(num%2 == 1){
+                    placeholder1 = myArray[num-1];
                     placeholder2 = myArray[num];
                     myArray[num] = placeholder1;
-                    myArray[num+1] = placeholder2;
+                    myArray[num-1] = placeholder2;
                 }
             }
         }
@@ -63,18 +58,18 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String encryptRotate(String input)
+    private String decryptRotate(String input)
     {
         char[] myArray = input.toCharArray();
         char placeholder1 = ' ';
         char placeholder2 = ' ';
-        char char1 = myArray[0];
-        for(int num = 0; num < myArray.length;num++){
+        char lastChar = myArray[myArray.length-1];
+        for(int num = myArray.length-1; num > 0 ;num--){
             placeholder1 = myArray[num];
-            if(num < myArray.length-1){
-                placeholder2 = myArray[num+1];
+            if(num > 1){
+                placeholder2 = myArray[num-1];
             }else{
-                placeholder2 = char1;
+                placeholder2 = lastChar;
             }
             myArray[num] = placeholder2;
         }
