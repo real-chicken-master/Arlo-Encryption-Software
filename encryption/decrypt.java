@@ -22,10 +22,16 @@ public class decrypt extends encrypt
     {
         String output = decryptByte(input);
         System.out.println(output);
+
+        output = decryptSubtitute(output);
+        System.out.println(output);
+
         output = decryptRotate(output);
         System.out.println(output);
+
         output = decryptSwap(output);
         System.out.println(output);
+
         return output;
     }
 
@@ -33,6 +39,23 @@ public class decrypt extends encrypt
         String output = "";
         for(int num = 0; num < input.length;num++){
             output += (char)input[num];
+        }
+        return output;
+    }
+
+    private String decryptSubtitute(String input) {
+        char[] tempArray = input.toCharArray();
+        char[] myArray = new char[tempArray.length-1];
+        for(int num = 0; num < tempArray.length-1;num++){
+            myArray[num] = tempArray[num];
+        }
+        int amount = (int)tempArray[tempArray.length-1];
+        for(int num = 0; num < myArray.length;num++){
+            myArray[num] += amount;
+        }
+        String output = "";   
+        for(int num = 0; num < myArray.length;num++){
+            output += myArray[num];
         }
         return output;
     }

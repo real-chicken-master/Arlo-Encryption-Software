@@ -8,6 +8,7 @@
 public class encrypt
 { 
     public  byte[] test = encrypt("this is a test");
+    private int substitute = 1;
     /**
      * Constructor for objects of class encrypt
      */
@@ -25,16 +26,36 @@ public class encrypt
     {
         String output = input;
         System.out.println(output);
+
         output = encryptSwap(output);
         System.out.println(output);
+
         output = encryptRotate(output); 
         System.out.println(output);
+
+        output = encryptSubtitute(output);
+        System.out.println(output);
+
         System.out.println(encryptBytes(output));
         return encryptBytes(output);
     }
 
     private byte[] encryptBytes(String input) {
         byte[] output = input.getBytes();
+        return output;
+    }
+
+    private String encryptSubtitute(String input) {  
+        int amount = (int)(Math.random()*10);
+        char[] myArray = input.toCharArray();
+        for(int num = 0; num < myArray.length;num++){
+            myArray[num] -= amount;
+        }
+        String output = "";   
+        for(int num = 0; num < myArray.length;num++){
+            output += myArray[num];
+        }
+        output += (char)amount;
         return output;
     }
 
