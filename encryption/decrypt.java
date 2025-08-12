@@ -1,3 +1,6 @@
+import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.Scanner;
 
 /**
  * Write a description of class decrypt here.
@@ -5,7 +8,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class decrypt extends encrypt
+public class decrypt
 {
     // instance variables - replace the example below with your own
 
@@ -15,13 +18,15 @@ public class decrypt extends encrypt
     public decrypt()
     {
         // initialise instance variables
-        String temp = decrypt(test);
+        Scanner kb;
+        kb = new Scanner(System.in);
+        String input = kb.nextLine();
+        String temp = decrypt(input);
     }
 
-    private String decrypt(byte[] input)
+    private String decrypt(String input)
     {
-        String output = decryptByte(input);
-        System.out.println(output);
+        String output = input;
 
         output = decryptSubtitute(output);
         System.out.println(output);
@@ -32,14 +37,6 @@ public class decrypt extends encrypt
         output = decryptSwap(output);
         System.out.println(output);
 
-        return output;
-    }
-
-    private String decryptByte(byte[] input) {
-        String output = "";
-        for(int num = 0; num < input.length;num++){
-            output += (char)input[num];
-        }
         return output;
     }
 

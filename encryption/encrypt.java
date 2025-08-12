@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 /**
  * Write a description of class encrypt here.
@@ -7,13 +8,15 @@
  */
 public class encrypt
 { 
-    public  byte[] test = encrypt("this is a test");
-    private int substitute = 1;
     /**
      * Constructor for objects of class encrypt
      */
     public encrypt()
     {
+        Scanner kb;
+        kb = new Scanner(System.in);
+        String input = kb.nextLine();
+        String temp = encrypt(input);
     }
 
     /**
@@ -22,7 +25,7 @@ public class encrypt
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    private byte[] encrypt(String input)
+    private String encrypt(String input)
     {
         String output = input;
         System.out.println(output);
@@ -36,13 +39,17 @@ public class encrypt
         output = encryptSubtitute(output);
         System.out.println(output);
 
-        System.out.println(encryptBytes(output));
-        return encryptBytes(output);
+        System.out.println(output);
+        return output;
     }
 
-    private byte[] encryptBytes(String input) {
-        byte[] output = input.getBytes();
-        return output;
+    private int[] StringToInt(String input){
+        char[] myArray = input.toCharArray();
+        int[] intArray = new int[myArray.length];
+        for(int num = 0; num < myArray.length;num++){
+            intArray[num] = (int)myArray[num];
+        }
+        return intArray;
     }
 
     private String encryptSubtitute(String input) {  
