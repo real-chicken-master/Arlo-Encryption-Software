@@ -9,19 +9,7 @@ import java.util.Scanner;
 public class encrypt
 { 
 
-    char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
-    /**
-     * Constructor for objects of class encrypt
-     */
-    public encrypt()
-    {
-        Scanner kb;
-        kb = new Scanner(System.in);
-        String input = kb.nextLine();
-        String temp = encrypt(input);
-        System.out.println(temp);
-    }
+    private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
     /**
      * An example of a method - replace this comment with your own
@@ -29,21 +17,17 @@ public class encrypt
      * @param  y  a sample parameter for a method
      * @return    the sum of x and y
      */
-    private String encrypt(String input)
+    public String encrypt(String input)
     {
         String output = input;
 
         output = encryptCaesar(output);
-        System.out.println(output);
 
         output = encryptSwap(output);
-        System.out.println(output);
 
         output = encryptRotate(output); 
-        System.out.println(output);
 
         output = encryptSubtitute(output);
-        System.out.println(output);
 
         return output;
     }
@@ -52,20 +36,21 @@ public class encrypt
         int amount1 = (int)(Math.random()*7-1);
         int amount10 = (int)(Math.random()*3-1);
         int amount = amount1 + (amount10*10);
-        System.out.println(amount);
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         for(int num = 0; num < inputArray.length;num++){
             for(int num2 = 0; num2 < alphabet.length;num2++){
-                if(inputArray[num] == alphabet[num2]){
-                    char outputChar = ' ';
-                    if((num2 + amount) < 26 ){
-                        outputChar = alphabet[num2 + amount];
-                    }else{
-                        outputChar = alphabet[num2 + amount - 26];
+                if(inputArray[num] !=  ' '){
+                    if(inputArray[num] == alphabet[num2]){
+                        char outputChar = ' ';
+                        if((num2 + amount) < 26 ){
+                            outputChar = alphabet[num2 + amount];
+                        }else{
+                            outputChar = alphabet[num2 + amount - 26];
+                        }
+                        outputArray[num] = outputChar;
+                        break;
                     }
-                    outputArray[num] = outputChar;
-                    break;
                 }
             }
         }
@@ -82,7 +67,12 @@ public class encrypt
         int amount = (int)(Math.random()*10-1);
         char[] myArray = input.toCharArray();
         for(int num = 0; num < myArray.length;num++){
-            myArray[num] -= amount;
+            if(myArray[num] !=  ' '){
+                myArray[num] -= amount;
+            }
+            if(((int)myArray[num]) == 0){
+                myArray[num] = ' ';
+            }
         }
         String output = "";   
         for(int num = 0; num < myArray.length;num++){
