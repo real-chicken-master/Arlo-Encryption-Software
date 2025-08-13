@@ -34,12 +34,16 @@ public class encrypt
         String output = input;
 
         output = encryptCaesar(output);
+        System.out.println(output);
 
         output = encryptSwap(output);
+        System.out.println(output);
 
         output = encryptRotate(output); 
+        System.out.println(output);
 
         output = encryptSubtitute(output);
+        System.out.println(output);
 
         return output;
     }
@@ -55,10 +59,10 @@ public class encrypt
             for(int num2 = 0; num2 < alphabet.length;num2++){
                 if(inputArray[num] == alphabet[num2]){
                     char outputChar = ' ';
-                    if((num + amount) < 26 ){
-                        outputChar = alphabet[num + amount];
+                    if((num2 + amount) < 26 ){
+                        outputChar = alphabet[num2 + amount];
                     }else{
-                        outputChar = alphabet[num + amount - 26];
+                        outputChar = alphabet[num2 + amount - 26];
                     }
                     outputArray[num] = outputChar;
                     break;

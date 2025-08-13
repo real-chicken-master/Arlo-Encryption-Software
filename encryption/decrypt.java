@@ -32,12 +32,16 @@ public class decrypt
         String output = input;
 
         output = decryptSubtitute(output);
+        System.out.println(output);
 
         output = decryptRotate(output);
+        System.out.println(output);
 
         output = decryptSwap(output);
+        System.out.println(output);
 
         output = decryptCaesar(output);
+        System.out.println(output);
 
         return output;
     }
@@ -50,19 +54,24 @@ public class decrypt
         }
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(tempArray[tempArray.length-1]) + (Character.getNumericValue(tempArray[tempArray.length-2])*10);
-        System.out.println(tempArray[inputArray.length-1]);
-        for(int num = inputArray.length-1; num > 1 ;num--){
-            for(int num2 = alphabet.length-1; num2 > 1 ;num2--){
-                if(inputArray[num] == alphabet[num2]){
-                    char outputChar = ' ';
-                    if((num - amount) >= 0 ){
-                        outputChar = alphabet[num - amount];
-                    }else{
-                        outputChar = alphabet[num - amount + 26];
+        if(amount>0){
+            for(int num = inputArray.length-1; num >= 0 ;num--){
+                for(int num2 = alphabet.length-1; num2 >= 0 ;num2--){
+                    if(inputArray[num] == alphabet[num2]){
+                        char outputChar = ' ';
+                        if((num2 - amount) >= 0 ){
+                            outputChar = alphabet[num2 - amount];
+                        }else{
+                            outputChar = alphabet[num2 - amount + 26];
+                        }
+                        outputArray[num] = outputChar;
+                        break;
                     }
-                    outputArray[num] = outputChar;
-                    break;
                 }
+            }
+        }else{
+            for(int num = 0; num < outputArray.length;num++){
+                outputArray[num] = inputArray[num];
             }
         }
         String output = "";
@@ -92,11 +101,11 @@ public class decrypt
 
     private String decryptSwap(String input) {
         char[] myArray = input.toCharArray();
-        for(int num2 = myArray.length-1; num2 > 1 ;num2--){
+        for(int num2 = myArray.length; num2 > 0 ;num2--){
             char placeholder1 = ' ';
             char placeholder2 = ' ';
-            for(int num = myArray.length-1; num > 1 ;num--){
-                if(num > 1){
+            for(int num = myArray.length; num > 0 ;num--){
+                if(num > 1 && num < 11){
                     if(num%2 == 1){
                         placeholder1 = myArray[num-1];
                         placeholder2 = myArray[num];
@@ -119,9 +128,9 @@ public class decrypt
         char placeholder1 = ' ';
         char placeholder2 = ' ';
         char lastChar = myArray[myArray.length-1];
-        for(int num = myArray.length-1; num > 0 ;num--){
+        for(int num = myArray.length-1; num >= 0 ;num--){
             placeholder1 = myArray[num];
-            if(num > 1){
+            if(num > 0){
                 placeholder2 = myArray[num-1];
             }else{
                 placeholder2 = lastChar;
