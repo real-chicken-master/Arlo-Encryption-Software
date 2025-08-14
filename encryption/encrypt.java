@@ -1,22 +1,16 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class encrypt here.
+ * has all the functions for my encryption.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (0.1)
  */
 public class encrypt
 { 
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
     public String encrypt(String input)
     {
         String output = input.toLowerCase();

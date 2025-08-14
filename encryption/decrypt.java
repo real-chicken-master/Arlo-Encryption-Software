@@ -3,10 +3,10 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 /**
- * Write a description of class decrypt here.
+ * has all the functions for my decryption.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (0.1)
  */
 public class decrypt extends encrypt
 {

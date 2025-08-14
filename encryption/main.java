@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
 /**
- * Write a description of class main here.
+ * the main function for encryption/decryption.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (0.1)
  */
 public class main extends decrypt
 {
