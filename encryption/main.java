@@ -18,11 +18,33 @@ public class main extends decrypt
     {
         Scanner kb;
         kb = new Scanner(System.in);
-        String input = kb.nextLine();
-        String encrypted = encrypt(input);
-        System.out.println(encrypted);
-        String decrypted = decrypt(encrypted);
-        System.out.println(decrypted);
+        String input;
+        String decrypted;
+        String encrypted;
+        System.out.println("e to encrypt or d to decrypt");
+        char[] array = (kb.nextLine()).toCharArray();
+        while(array.length <= 1 && array.length > 0){
+            array = (kb.nextLine()).toCharArray();
+
+        }       
+        switch(array[0]){
+            case 'e':
+                input= kb.nextLine();
+                encrypted = encrypt(input);
+                System.out.println(encrypted);
+            case 'E':
+                input= kb.nextLine();
+                encrypted = encrypt(input);
+                System.out.println(encrypted);
+            case 'd':
+                input= kb.nextLine();
+                decrypted = decrypt(input);
+                System.out.println(decrypted);
+            case 'D':
+                input= kb.nextLine();
+                decrypted = decrypt(input);
+                System.out.println(decrypted);
+        }
     }
 
     /**

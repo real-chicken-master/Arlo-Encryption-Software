@@ -16,6 +16,7 @@ public class decrypt extends encrypt
 
     public String decrypt(String input)
     {
+        System.out.println("test");
         String output = input;
 
         output = decryptSubtitute(output);
