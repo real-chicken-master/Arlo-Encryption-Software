@@ -19,7 +19,9 @@ public class encrypt
      */
     public String encrypt(String input)
     {
-        String output = input;
+        String output = input.toLowerCase();
+
+        output = encrypt2d(output);
 
         output = encryptCaesar(output);
 
@@ -29,6 +31,35 @@ public class encrypt
 
         output = encryptSubtitute(output);
 
+        return output;
+    }
+
+    private String encrypt2d(String input){
+        char[] inputArray = input.toCharArray();
+        int outputx = (int)Math.ceil(Math.sqrt(inputArray.length));
+        int outputy =  outputx;
+        char[][] outputArray = new char[outputx][outputy];
+        int num = 0;
+        for(int numx = 0; numx < outputx;numx++){
+            for(int numy = 0; numy < outputy;numy++){
+                if(num < inputArray.length){
+                    outputArray[numx][numy] = inputArray[num];
+                    num++;
+                }
+            }
+        }
+        String output = "";
+        num = 0;
+        for(int numx = 0; numx < outputx;numx++){
+            for(int numy = 0; numy < outputy;numy++){
+                if(num < inputArray.length){
+                    if(((int)outputArray[numy][numx]) != 0){
+                        output += outputArray[numy][numx];
+                        num++;
+                    }
+                }
+            }
+        }
         return output;
     }
 

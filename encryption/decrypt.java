@@ -16,21 +16,47 @@ public class decrypt extends encrypt
 
     public String decrypt(String input)
     {
-        System.out.println("test");
-        String output = input;
+        String output = input.toLowerCase();
 
         output = decryptSubtitute(output);
-        
 
         output = decryptRotate(output);
-        
 
         output = decryptSwap(output);
-        
 
         output = decryptCaesar(output);
-        
 
+        output = decrypt2d(output);
+
+        return output;
+    }
+
+    private String decrypt2d(String input){
+        char[] inputArray = input.toCharArray();
+        int outputx = (int)Math.ceil(Math.sqrt(inputArray.length));
+        int outputy =  outputx;
+        char[][] outputArray = new char[outputx][outputy];
+        int num = 0;
+        for(int numx = 0; numx < outputx;numx++){
+            for(int numy = 0; numy < outputy;numy++){
+                if(num < inputArray.length){
+                    outputArray[numx][numy] = inputArray[num];
+                    num++;
+                }
+            }
+        }
+        String output = "";
+        num = 0;
+        for(int numx = 0; numx < outputx;numx++){
+            for(int numy = 0; numy < outputy;numy++){
+                if(num < inputArray.length){
+                    if(((int)outputArray[numy][numx]) != 0){
+                        output += outputArray[numy][numx];
+                        num++;
+                    }
+                }
+            }
+        }
         return output;
     }
 
