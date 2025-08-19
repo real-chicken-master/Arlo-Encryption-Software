@@ -10,57 +10,38 @@ public class encrypt
 { 
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-
+    private int amount = 0;
     public String encrypt(String input)
     {
         String output = input.toLowerCase();
 
-        output = encrypt2d(output);
-
         output = encryptCaesar(output);
+        System.out.println(output);
 
         output = encryptSwap(output);
+        System.out.println(output);
 
         output = encryptRotate(output); 
+        System.out.println(output);
 
-        output = encryptSubtitute(output);
-
-        return output;
-    }
-
-    private String encrypt2d(String input){
-        char[] inputArray = input.toCharArray();
-        int outputx = (int)Math.ceil(Math.sqrt(inputArray.length));
-        int outputy =  outputx;
-        char[][] outputArray = new char[outputx][outputy];
-        int num = 0;
-        for(int numx = 0; numx < outputx;numx++){
-            for(int numy = 0; numy < outputy;numy++){
-                if(num < inputArray.length){
-                    outputArray[numx][numy] = inputArray[num];
-                    num++;
-                }
-            }
-        }
-        String output = "";
-        num = 0;
-        for(int numx = 0; numx < outputx;numx++){
-            for(int numy = 0; numy < outputy;numy++){
-                if(num < inputArray.length){
-                    if(((int)outputArray[numy][numx]) != 0){
-                        output += outputArray[numy][numx];
-                        num++;
-                    }
-                }
-            }
-        }
         return output;
     }
 
     private String encryptCaesar(String input) {
-        int amount1 = (int)(Math.random()*7-1);
-        int amount10 = (int)(Math.random()*3-1);
-        int amount = amount1 + (amount10*10);
+        System.out.println("your key is");
+        char[] key = randomKey();
+        char[] tempAlphabet = alphabet;
+        for(int num = 0; num < key.length; num++){
+            for(int num2 = 0; num2 < alphabet.length; num2++){
+                if(key[num] == alphabet[num2]){
+                    char char1 = key[num];
+                    char char2 = tempAlphabet[num];
+                    tempAlphabet[num] = char1;
+                    tempAlphabet[num2] = char2;
+                }
+            }
+        }
+        alphabet = tempAlphabet;
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         for(int num = 0; num < inputArray.length;num++){
@@ -81,29 +62,13 @@ public class encrypt
         }
         String output = "";
         for(int num = 0; num < outputArray.length;num++){
+            if(((int)outputArray[num]) == 0){
+                outputArray[num] = ' ';       
+            }
+        }
+        for(int num = 0; num < outputArray.length;num++){
             output += outputArray[num];
         }
-        output += amount10;
-        output += amount1;
-        return output;
-    }
-
-    private String encryptSubtitute(String input) {  
-        int amount = (int)(Math.random()*10-1);
-        char[] myArray = input.toCharArray();
-        for(int num = 0; num < myArray.length;num++){
-            if(myArray[num] !=  ' '){
-                myArray[num] -= amount;
-            }
-            if(((int)myArray[num]) == 0){
-                myArray[num] = ' ';
-            }
-        }
-        String output = "";   
-        for(int num = 0; num < myArray.length;num++){
-            output += myArray[num];
-        }
-        output += amount;
         return output;
     }
 
@@ -150,5 +115,33 @@ public class encrypt
             output += myArray[num];
         }
         return output;
+    }
+
+    private char[] randomKey(){
+        char[] tempKey = new char[alphabet.length+2];
+        for(int num = 0; num < tempKey.length-2; num++){
+            boolean blockPlaced = false;
+            while(!blockPlaced){
+                boolean charIsAvalible = true;
+                int temp = (int)(Math.random()*26);
+                for(int num2 = 0; num2 < tempKey.length-2;num2 ++){
+                    if(tempKey[num2] == alphabet[temp]){
+                        charIsAvalible = false;
+                    }
+                }
+                if(charIsAvalible){
+                    tempKey[num] = alphabet[temp];
+                    blockPlaced = true;
+                }
+            }
+            System.out.print(tempKey[num]);
+        }
+        amount = (int)(Math.random()*26);
+        if(amount<10){
+        System.out.print("0");
+        }
+        System.out.println(amount);
+        char[] key = tempKey;
+        return key;
     }
 }
