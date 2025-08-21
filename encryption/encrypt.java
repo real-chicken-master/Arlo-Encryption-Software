@@ -15,7 +15,7 @@ public class encrypt
     {
         String output = input.toLowerCase();
 
-        output = encryptCaesar(output);
+        output = encryptKey(output);
         System.out.println(output);
 
         output = encryptSwap(output);
@@ -26,10 +26,23 @@ public class encrypt
 
         return output;
     }
-
-    private String encryptCaesar(String input) {
-        System.out.println("your key is");
+    
+    private String encryptKey(String input){
+        String output;
         char[] key = randomKey();
+        char[] key1 = new char[(key.length/2)];
+        char[] key2 = new char[(key.length/2)];
+        for(int num =0; num < key1.length; num++){
+            key1[num] = key[num];
+            key2[num] = key[num+key1.length];
+        }
+        output = encryptCaesar(input, key1);
+        output = encryptCaesar(output,key2);
+        return output;
+    }
+    
+    private String encryptCaesar(String input, char[] key) {
+        System.out.println("your key is");
         char[] tempAlphabet = alphabet;
         for(int num = 0; num < key.length; num++){
             for(int num2 = 0; num2 < alphabet.length; num2++){

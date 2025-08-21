@@ -24,16 +24,28 @@ public class decrypt extends encrypt
         output = decryptSwap(output);
         System.out.println(output);
 
-        output = decryptCaesar(output);
+        output = decryptKey(output);
         System.out.println(output);
-
 
         return output;
     }
 
-    private String decryptCaesar(String input) {
+    private String decryptKey(String input){
         System.out.println("please enter the key");
         char[] key = getKey();
+        char[] key1 = new char[(key.length/2)];
+        char[] key2 = new char[(key.length/2)];
+        for(int num =0; num < key1.length; num++){
+            key1[num] = key[num];
+            key2[num] = key[num+key1.length];
+        }
+        String output;
+        output = decryptCaesar(input,key1);
+        output = decryptCaesar(output,key2);
+        return "";
+    }
+
+    private String decryptCaesar(String input,char[] key) {
         char[] tempAlphabet = alphabet;
         for(int num = 0; num < key.length; num++){
             for(int num2 = 0; num2 < alphabet.length; num2++){
