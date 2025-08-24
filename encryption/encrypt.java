@@ -10,6 +10,7 @@ public class encrypt
 { 
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','۽','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
     private int amount = 0;
     public String encrypt(String input)
     {
@@ -36,31 +37,31 @@ public class encrypt
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
         }
-        output = encryptCaesar(input, key1);
-        output = encryptCaesar(output,key2);
+        output = encryptCaesar(input, key1, alphabet);
+        output = encryptCaesar(output, key2, Symbols);
         return output;
     }
     
-    private String encryptCaesar(String input, char[] key) {
+    private String encryptCaesar(String input, char[] key, char[] List) {
         System.out.println("your key is");
-        char[] tempAlphabet = alphabet;
+        char[] tempList = List;
         for(int num = 0; num < key.length; num++){
-            for(int num2 = 0; num2 < alphabet.length; num2++){
-                if(key[num] == alphabet[num2]){
+            for(int num2 = 0; num2 < List.length; num2++){
+                if(key[num] == List[num2]){
                     char char1 = key[num];
-                    char char2 = tempAlphabet[num];
-                    tempAlphabet[num] = char1;
-                    tempAlphabet[num2] = char2;
+                    char char2 = tempList[num];
+                    tempList[num] = char1;
+                    tempList[num2] = char2;
                 }
             }
         }
-        alphabet = tempAlphabet;
+        alphabet = tempList;
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         for(int num = 0; num < inputArray.length;num++){
-            for(int num2 = 0; num2 < alphabet.length;num2++){
+            for(int num2 = 0; num2 < List.length;num2++){
                 if(inputArray[num] !=  ' '){
-                    if(inputArray[num] == alphabet[num2]){
+                    if(inputArray[num] == List[num2]){
                         char outputChar = ' ';
                         if((num2 + amount) < 26 ){
                             outputChar = alphabet[num2 + amount];
