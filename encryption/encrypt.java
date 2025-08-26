@@ -17,19 +17,17 @@ public class encrypt
         String output = input.toLowerCase();
 
         output = encryptKey(output);
-        System.out.println(output);
 
         output = encryptSwap(output);
-        System.out.println(output);
 
-        output = encryptRotate(output); 
-        System.out.println(output);
+        output = encryptRotate(output);
 
         return output;
     }
-    
+
     private String encryptKey(String input){
         String output;
+        System.out.println("your key is");
         char[] key = randomKey();
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
@@ -37,17 +35,16 @@ public class encrypt
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
         }
-        output = encryptCaesar(input, key1, alphabet);
-        output = encryptCaesar(output, key2, Symbols);
+        output = encryptCaesar(input, key1, alphabet, alphabet);
+        output = encryptCaesar(output, key2, alphabet ,Symbols);
         return output;
     }
-    
-    private String encryptCaesar(String input, char[] key, char[] List) {
-        System.out.println("your key is");
-        char[] tempList = List;
+
+    private String encryptCaesar(String input, char[] key, char[] inList, char[] outList) {
+        char[] tempList = outList;
         for(int num = 0; num < key.length; num++){
-            for(int num2 = 0; num2 < List.length; num2++){
-                if(key[num] == List[num2]){
+            for(int num2 = 0; num2 < outList.length; num2++){
+                if(key[num] == outList[num2]){
                     char char1 = key[num];
                     char char2 = tempList[num];
                     tempList[num] = char1;
@@ -55,18 +52,18 @@ public class encrypt
                 }
             }
         }
-        alphabet = tempList;
+        outList = tempList;
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         for(int num = 0; num < inputArray.length;num++){
-            for(int num2 = 0; num2 < List.length;num2++){
+            for(int num2 = 0; num2 < outList.length;num2++){
                 if(inputArray[num] !=  ' '){
-                    if(inputArray[num] == List[num2]){
+                    if(inputArray[num] == inList[num2]){
                         char outputChar = ' ';
                         if((num2 + amount) < 26 ){
-                            outputChar = alphabet[num2 + amount];
+                            outputChar = outList[num2 + amount];
                         }else{
-                            outputChar = alphabet[num2 + amount - 26];
+                            outputChar = outList[num2 + amount - 26];
                         }
                         outputArray[num] = outputChar;
                         break;
@@ -132,13 +129,13 @@ public class encrypt
     }
 
     private char[] randomKey(){
-        char[] tempKey = new char[alphabet.length+2];
-        for(int num = 0; num < tempKey.length-2; num++){
+        char[] tempKey = new char[alphabet.length];
+        for(int num = 0; num < tempKey.length; num++){
             boolean blockPlaced = false;
             while(!blockPlaced){
                 boolean charIsAvalible = true;
                 int temp = (int)(Math.random()*26);
-                for(int num2 = 0; num2 < tempKey.length-2;num2 ++){
+                for(int num2 = 0; num2 < tempKey.length;num2 ++){
                     if(tempKey[num2] == alphabet[temp]){
                         charIsAvalible = false;
                     }
@@ -148,11 +145,11 @@ public class encrypt
                     blockPlaced = true;
                 }
             }
-            System.out.print(tempKey[num]);
         }
         amount = (int)(Math.random()*26);
+        System.out.print(tempKey);
         if(amount<10){
-        System.out.print("0");
+            System.out.print("0");
         }
         System.out.println(amount);
         char[] key = tempKey;
