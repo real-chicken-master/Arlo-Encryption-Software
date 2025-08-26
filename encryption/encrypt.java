@@ -10,7 +10,7 @@ public class encrypt
 { 
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','۽','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
+    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
     private int amount = 0;
     public String encrypt(String input)
     {
@@ -29,6 +29,7 @@ public class encrypt
         String output;
         System.out.println("your key is");
         char[] key = randomKey();
+        System.out.println(key);
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
         for(int num =0; num < key1.length; num++){
@@ -55,10 +56,13 @@ public class encrypt
         outList = tempList;
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
+        int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
         for(int num = 0; num < inputArray.length;num++){
+            boolean out = false;
             for(int num2 = 0; num2 < outList.length;num2++){
                 if(inputArray[num] !=  ' '){
                     if(inputArray[num] == inList[num2]){
+                        out = true;
                         char outputChar = ' ';
                         if((num2 + amount) < 26 ){
                             outputChar = outList[num2 + amount];
@@ -69,6 +73,9 @@ public class encrypt
                         break;
                     }
                 }
+            }
+            if(!out){
+                outputArray[num] = inputArray[num];
             }
         }
         String output = "";
@@ -129,8 +136,8 @@ public class encrypt
     }
 
     private char[] randomKey(){
-        char[] tempKey = new char[alphabet.length];
-        for(int num = 0; num < tempKey.length; num++){
+        char[] tempKey = new char[alphabet.length + Symbols.length + 4];
+        for(int num = 0; num < alphabet.length; num++){
             boolean blockPlaced = false;
             while(!blockPlaced){
                 boolean charIsAvalible = true;
@@ -147,11 +154,41 @@ public class encrypt
             }
         }
         amount = (int)(Math.random()*26);
-        System.out.print(tempKey);
-        if(amount<10){
-            System.out.print("0");
+        char[] amountArray;
+        amountArray = (String.valueOf(amount)).toCharArray();
+        if(amount < 10){
+            tempKey[alphabet.length] = '0';
+            tempKey[alphabet.length+1] = amountArray[0];
+        }else{
+            tempKey[alphabet.length] = amountArray[0];
+            tempKey[alphabet.length+1] = amountArray[1];
         }
-        System.out.println(amount);
+
+        for(int num = alphabet.length+2 ; num < (alphabet.length + Symbols.length + 2); num++){
+            boolean blockPlaced = false;
+            while(!blockPlaced){
+                boolean charIsAvalible = true;
+                int temp = (int)(Math.random()*26);
+                for(int num2 = 0; num2 < tempKey.length;num2 ++){
+                    if(tempKey[num2] == Symbols[temp]){
+                        charIsAvalible = false;
+                    }
+                }
+                if(charIsAvalible){
+                    tempKey[num] = Symbols[temp];
+                    blockPlaced = true;
+                }
+            }
+        }
+        amount = (int)(Math.random()*26);
+        amountArray =  (String.valueOf(amount)).toCharArray();
+        if(amount < 10){
+            tempKey[(alphabet.length + Symbols.length + 2)] = '0';
+            tempKey[(alphabet.length + Symbols.length + 2)+1] = amountArray[0];
+        }else{
+            tempKey[(alphabet.length + Symbols.length + 2)] = amountArray[0];
+            tempKey[(alphabet.length + Symbols.length + 2)+1] = amountArray[1];
+        }
         char[] key = tempKey;
         return key;
     }

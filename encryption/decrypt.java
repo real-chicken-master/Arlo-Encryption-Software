@@ -13,20 +13,17 @@ public class decrypt extends encrypt
     // instance variables - replace the example below with your own
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','۽','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
+    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
 
     public String decrypt(String input)
     {
         String output = input.toLowerCase();
 
         output = decryptRotate(output);
-        System.out.println(output);
 
         output = decryptSwap(output);
-        System.out.println(output);
 
         output = decryptKey(output);
-        System.out.println(output);
 
         return output;
     }
@@ -34,6 +31,11 @@ public class decrypt extends encrypt
     private String decryptKey(String input){
         System.out.println("please enter the key");
         char[] key = getKey();
+        char[] keyalphabet = new char[alphabet.length];
+        for(int num =0; num < keyalphabet.length; num++){
+            keyalphabet[num] = key[num];
+        }
+        alphabet = keyalphabet;
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
         for(int num =0; num < key1.length; num++){
@@ -41,26 +43,16 @@ public class decrypt extends encrypt
             key2[num] = key[num+key1.length];
         }
         String output;
-        output = decryptCaesar(input,key1, alphabet, alphabet);
-        System.out.println(output);
-        output = decryptCaesar(output,key2, Symbols, alphabet);
-        System.out.println(output);
-        return "";
+        output = decryptCaesar(input,key2, alphabet);
+        output = decryptCaesar(output,key1, alphabet);
+        return output;
     }
 
-    private String decryptCaesar(String input, char[] key, char[] inList, char[] outList) {
-        char[] tempList = outList;
-        for(int num = 0; num < key.length; num++){
-            for(int num2 = 0; num2 < alphabet.length; num2++){
-                if(key[num] == alphabet[num2]){
-                    char char1 = key[num];
-                    char char2 = tempList[num];
-                    tempList[num] = char1;
-                    tempList[num2] = char2;
-                }
-            }
+    private String decryptCaesar(String input, char[] key, char[] outList) {
+        char[] inList = new char[key.length-2];
+        for(int num = 0; num < inList.length;num++){
+            inList[num] = key[num];
         }
-        alphabet = outList;
         char[] tempArray = input.toCharArray();
         char[] inputArray = new char[tempArray.length];
         for(int num = 0; num < inputArray.length;num++){
@@ -73,25 +65,24 @@ public class decrypt extends encrypt
         }
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
-        if(amount>0){
-            for(int num = inputArray.length-1; num >= 0 ;num--){
-                for(int num2 = alphabet.length-1; num2 >= 0 ;num2--){
-                    if(inputArray[num] !=  ' '){
-                        if(inputArray[num] == inList[num2]){
-                            char outputChar = ' ';
-                            if((num2 - amount) >= 0 ){
-                                outputChar = outList[num2 - amount];
-                            }else{
-                                outputChar = outList[num2 - amount + 26];
-                            }
-                            outputArray[num] = outputChar;
-                            break;
+        for(int num = inputArray.length-1; num >= 0 ;num--){
+            boolean out = false;
+            for(int num2 = inList.length-1; num2 >= 0 ;num2--){
+                if(inputArray[num] !=  ' '){
+                    if(inputArray[num] == inList[num2]){
+                        out = true;
+                        char outputChar = ' ';
+                        if((num2 - amount) >= 0 ){
+                            outputChar = outList[num2 - amount];
+                        }else{
+                            outputChar = outList[num2 - amount + 26];
                         }
+                        outputArray[num] = outputChar;
+                        break;
                     }
                 }
             }
-        }else{
-            for(int num = 0; num < outputArray.length;num++){
+            if(!out){
                 outputArray[num] = inputArray[num];
             }
         }

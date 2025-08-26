@@ -40,6 +40,7 @@ public class main extends decrypt
                 System.out.println("please enter the string you want to encrypt");
                 input= kb.nextLine();
                 encrypted = encrypt(input);
+                System.out.println("your encrypted String is");
                 System.out.println(encrypted);
             }
             //decrypt mode
@@ -49,12 +50,14 @@ public class main extends decrypt
                 System.out.println("please enter the string you want to decrypt");
                 input= kb.nextLine();
                 decrypted = decrypt(input);
+                System.out.println("your encrypted String is");
                 System.out.println(decrypted);
             }
             //ask to run again
             System.out.println("enter r to run again enter anything else to exit");
-            String nextLine = kb.nextLine();
-            if(nextLine.contains("rR")){
+            char[] nextLine = (kb.nextLine()).toCharArray();
+            char temp = nextLine[0];
+            if(temp != 'r'){
                 run = false;
             }
         }
