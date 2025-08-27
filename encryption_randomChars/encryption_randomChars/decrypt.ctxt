@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=decrypt
+comment0.text=\r\n\ has\ all\ the\ functions\ for\ my\ decryption.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (0.1)\r\n
+comment1.params=input
+comment1.target=java.lang.String\ decrypt(java.lang.String)
+comment2.params=input
+comment2.target=java.lang.String\ decryptKey(java.lang.String)
+comment3.params=input\ key\ outList
+comment3.target=java.lang.String\ decryptCaesar(java.lang.String,\ char[],\ char[])
+comment4.params=input
+comment4.target=java.lang.String\ decryptSwap(java.lang.String)
+comment5.params=input
+comment5.target=java.lang.String\ decryptRotate(java.lang.String)
+comment6.params=
+comment6.target=char[]\ getKey()
+numComments=7
