@@ -36,24 +36,22 @@ public class encrypt
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
         }
-        output = encryptCaesar(input, key1, alphabet, alphabet);
-        output = encryptCaesar(output, key2, alphabet ,Symbols);
+        char[] list1 = new char[26];
+        for(int num =0; num < list1.length; num++){
+            list1[num] = key1[num];
+        }
+        char[] list2 = new char[26];
+        for(int num =0; num < list2.length; num++){
+            list2[num] = key2[num];
+        }
+        output = encryptCaesar(input, key1, alphabet, list1);
+        System.out.println(output);
+        output = encryptCaesar(output, key2, alphabet ,list2);
+        System.out.println(output);
         return output;
     }
 
     private String encryptCaesar(String input, char[] key, char[] inList, char[] outList) {
-        char[] tempList = outList;
-        for(int num = 0; num < key.length; num++){
-            for(int num2 = 0; num2 < outList.length; num2++){
-                if(key[num] == outList[num2]){
-                    char char1 = key[num];
-                    char char2 = tempList[num];
-                    tempList[num] = char1;
-                    tempList[num2] = char2;
-                }
-            }
-        }
-        outList = tempList;
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
