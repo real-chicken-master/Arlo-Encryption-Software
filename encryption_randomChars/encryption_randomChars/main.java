@@ -50,7 +50,7 @@ public class main extends decrypt
                 System.out.println("please enter the string you want to decrypt");
                 input= kb.nextLine();
                 decrypted = decrypt(input);
-                System.out.println("your encrypted String is");
+                System.out.println("your decrypted String is");
                 System.out.println(decrypted);
             }
             //ask to run again

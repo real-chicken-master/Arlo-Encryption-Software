@@ -29,7 +29,6 @@ public class encrypt
         String output;
         System.out.println("your key is");
         char[] key = randomKey();
-        System.out.println(key);
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
         for(int num =0; num < key1.length; num++){
@@ -45,9 +44,7 @@ public class encrypt
             list2[num] = key2[num];
         }
         output = encryptCaesar(input, key1, alphabet, list1);
-        System.out.println(output);
         output = encryptCaesar(output, key2, alphabet ,list2);
-        System.out.println(output);
         return output;
     }
 
@@ -139,14 +136,15 @@ public class encrypt
             boolean blockPlaced = false;
             while(!blockPlaced){
                 boolean charIsAvalible = true;
-                int temp = (int)(Math.random()*26);
+                int temp = (int)(Math.random()*94)+32;
+                char Char = Character.toLowerCase((char) temp);
                 for(int num2 = 0; num2 < tempKey.length;num2 ++){
-                    if(tempKey[num2] == alphabet[temp]){
+                    if(tempKey[num2] == Char){
                         charIsAvalible = false;
                     }
                 }
                 if(charIsAvalible){
-                    tempKey[num] = alphabet[temp];
+                    tempKey[num] = Char;
                     blockPlaced = true;
                 }
             }
@@ -166,14 +164,15 @@ public class encrypt
             boolean blockPlaced = false;
             while(!blockPlaced){
                 boolean charIsAvalible = true;
-                int temp = (int)(Math.random()*26);
+                int temp = (int)(Math.random()*94)+32;
+                char Char = Character.toLowerCase((char) temp);
                 for(int num2 = 0; num2 < tempKey.length;num2 ++){
-                    if(tempKey[num2] == Symbols[temp]){
+                    if(tempKey[num2] == Char){
                         charIsAvalible = false;
                     }
                 }
                 if(charIsAvalible){
-                    tempKey[num] = Symbols[temp];
+                    tempKey[num] = Char;
                     blockPlaced = true;
                 }
             }

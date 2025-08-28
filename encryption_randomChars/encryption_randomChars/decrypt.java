@@ -31,11 +31,6 @@ public class decrypt extends encrypt
     private String decryptKey(String input){
         System.out.println("please enter the key");
         char[] key = getKey();
-        char[] keyalphabet = new char[alphabet.length];
-        for(int num =0; num < keyalphabet.length; num++){
-            keyalphabet[num] = key[num];
-        }
-        alphabet = keyalphabet;
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
         for(int num =0; num < key1.length; num++){
@@ -43,18 +38,16 @@ public class decrypt extends encrypt
             key2[num] = key[num+key1.length];
         }
         char[] list1 = new char[26];
-        for(int num =0; num < list1.length; num++){
+        for(int num = 0; num < list1.length; num++){
             list1[num] = key1[num];
         }
         char[] list2 = new char[26];
-        for(int num =0; num < list2.length; num++){
+        for(int num = 0; num < list2.length; num++){
             list2[num] = key2[num];
         }
         String output;
         output = decryptCaesar(input, key2, list2, alphabet);
-        System.out.println(output);
         output = decryptCaesar(output, key1, list1, alphabet);
-        System.out.println(output);
         return output;
     }
 
@@ -71,7 +64,6 @@ public class decrypt extends encrypt
         }
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
-        System.out.println(amount);
         for(int num = inputArray.length-1; num >= 0 ;num--){
             boolean out = false;
             for(int num2 = inList.length-1; num2 >= 0 ;num2--){
