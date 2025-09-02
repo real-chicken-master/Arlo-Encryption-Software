@@ -14,25 +14,60 @@ public class decrypt extends encrypt
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
-
+    char[] key;
     public String decrypt(String input)
-    {
+    {   
+        key = getKey();
+
         String output = input.toLowerCase();
 
         output = decryptRotate(output);
 
         output = decryptSwap(output);
 
+        output = decrypt2dArray(output);
+
         output = decryptKey(output);
 
         return output;
     }
 
-    private String decryptKey(String input){
-        System.out.println("please enter the key");
-        char[] key = getKey();
-        char[] key1 = new char[(key.length/2)];
-        char[] key2 = new char[(key.length/2)];
+    private String decrypt2dArray(String input){
+        String output = input;
+        char[] arrayKey = new char[key.length/3];
+        for(int num = 0; num < arrayKey.length; num++){
+            arrayKey[num] = key[num + 56];
+        }
+        System.out.println(arrayKey);
+        output = input;
+        char[] inputArray = input.toCharArray();
+        char[][] array = new char [input.length()][input.length()];
+        int charsLeft = (int)Math.sqrt(input.length());
+        int loopLeft =  input.length();
+        for(int numx = 0; numx < input.length(); numx++){
+            for(int numy = 0; numy < input.length(); numy++){
+                for(int num = 0 ; num < input.length(); num++){
+                    if(array[numx][numy] == arrayKey[num]){
+                        array[numx][numy] = 0;
+                    }
+                }
+            }
+        }
+        output = "";
+        for(int numx = 0; numx < input.length(); numx++){
+            for(int numy = 0; numy < input.length(); numy++){
+                if(array[numx][numy] != 0){
+                    output += array[numx][numy];
+                }
+            }
+        }
+        return output;
+    }
+
+    private String decryptKey(String input)
+    {
+        char[] key1 = new char[(key.length/3)];
+        char[] key2 = new char[(key.length/3)];
         for(int num =0; num < key1.length; num++){
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
@@ -149,11 +184,13 @@ public class decrypt extends encrypt
     }
 
     private char[] getKey(){
+        System.out.println("please enter the key");
         Scanner kb;
         kb = new Scanner(System.in);
         char[] key = (kb.nextLine()).toCharArray();
+        System.out.println(key.length);
         while(true){
-            if(key.length == 56){
+            if(key.length == 86){
                 break;
             }
             System.out.println("invalid key");
