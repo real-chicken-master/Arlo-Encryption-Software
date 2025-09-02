@@ -29,6 +29,7 @@ public class encrypt
         String output;
         System.out.println("your key is");
         char[] key = randomKey();
+        System.out.println(key);
         char[] key1 = new char[(key.length/2)];
         char[] key2 = new char[(key.length/2)];
         for(int num =0; num < key1.length; num++){

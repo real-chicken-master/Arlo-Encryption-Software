@@ -152,6 +152,13 @@ public class decrypt extends encrypt
         Scanner kb;
         kb = new Scanner(System.in);
         char[] key = (kb.nextLine()).toCharArray();
+        while(true){
+            if(key.length == 56){
+                break;
+            }
+            System.out.println("invalid key");
+            key = (kb.nextLine()).toCharArray();
+        }
         return key;
     }
 }
