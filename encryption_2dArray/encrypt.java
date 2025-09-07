@@ -44,7 +44,6 @@ public class encrypt
             {
                 int temp = (int)(Math.random()*2);
                 outputArray[num] = key[key.length-1-temp];
-                System.out.println(key[key.length-1-temp]);
             }
             previousChar = outputArray[num];
         }

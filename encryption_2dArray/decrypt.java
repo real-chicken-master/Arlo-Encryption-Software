@@ -22,6 +22,8 @@ public class decrypt extends encrypt
 
         String output = input.toLowerCase();
 
+        output = decryptDoubles(output);
+        
         output = decryptRotate(output);
 
         output = decryptSwap(output);
@@ -29,7 +31,7 @@ public class decrypt extends encrypt
         output = decrypt2dArray(output);
 
         output = decryptKey(output);
-
+        
         return output;
     }
 
