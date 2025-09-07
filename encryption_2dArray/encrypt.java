@@ -10,9 +10,10 @@ public class encrypt
 { 
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
+    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
     private int amount = 0;
     private char[] key;
+
     public String encrypt(String input)
     {   
         char[] key = randomKey();
@@ -27,22 +28,50 @@ public class encrypt
 
         output = encryptRotate(output);
 
+        output = encryptDoubles(output);
+
         return output;
     }
 
-    private String encrypt2dArray(String input){
+    private String encryptDoubles(String input)
+    {
+        String output = input;
+        char[] outputArray = output.toCharArray();
+        char previousChar = ' ';
+        for(int num = 0;num < outputArray.length; num++)
+        {   
+            if(outputArray[num] == previousChar)
+            {
+                int temp = (int)(Math.random()*2);
+                outputArray[num] = key[key.length-1-temp];
+                System.out.println(key[key.length-1-temp]);
+            }
+            previousChar = outputArray[num];
+        }
+        output = "";
+        for(int num = 0; num < outputArray.length;num ++)
+        {
+            output += outputArray[num];
+        }
+        return output;
+    }
+
+    private String encrypt2dArray(String input)
+    {
         char[] arrayKey = new char[key.length/3];
-        for(int num = 0; num < arrayKey.length; num++){
+        for(int num = 0; num < arrayKey.length; num++)
+        {
             arrayKey[num] = key[num + 56];
         }
-        System.out.println(arrayKey);
         String output = input;
         char[] inputArray = input.toCharArray();
-        char[][] array = new char [input.length()][input.length()];
         int charsLeft = input.length();
+        int xLength = input.length();
+        int yLength = input.length();
+        char[][] array = new char [xLength][yLength];
         int loopLeft = input.length()*input.length();
-        for(int numx = 0; numx < input.length(); numx++){
-            for(int numy = 0; numy < input.length(); numy++){
+        for(int numx = 0; numx < xLength; numx++){
+            for(int numy = 0; numy < yLength; numy++){
                 if((input.length()-charsLeft) < input.length()){
                     if(charsLeft < loopLeft){
                         int temp = (int)(Math.random()*3);            
@@ -62,8 +91,8 @@ public class encrypt
             }
         }
         output = "";
-        for(int numx = 0; numx < input.length(); numx++){
-            for(int numy = 0; numy < input.length(); numy++){
+        for(int numx = 0; numx < xLength; numx++){
+            for(int numy = 0; numy < yLength; numy++){
                 output += array[numx][numy];
             }
         }
@@ -74,8 +103,8 @@ public class encrypt
         String output;
         System.out.println("your key is");
         System.out.println(key);
-        char[] key1 = new char[(key.length/3)];
-        char[] key2 = new char[(key.length/3)];
+        char[] key1 = new char[((key.length-2)/3)];
+        char[] key2 = new char[((key.length-2)/3)];
         for(int num =0; num < key1.length; num++){
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
@@ -97,7 +126,6 @@ public class encrypt
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
-        System.out.println(amount);
         for(int num = 0; num < inputArray.length;num++){
             boolean out = false;
             for(int num2 = 0; num2 < outList.length;num2++){
@@ -177,7 +205,7 @@ public class encrypt
     }
 
     private char[] randomKey(){
-        char[] tempKey = new char[26 + 26 + 26 + 8];
+        char[] tempKey = new char[26 + 26 + 26 + 10];
         for(int num = 0; num < 26; num++){
             boolean blockPlaced = false;
             while(!blockPlaced){
@@ -276,6 +304,31 @@ public class encrypt
         }else{
             tempKey[(26 + 26 + 6 + 26 )] = amountArray[0];
             tempKey[(26 + 26 + 6 + 26 )+1] = amountArray[1];
+        }
+        for(int num = tempKey.length-3 ; num < tempKey.length; num++){
+            boolean blockPlaced = false;
+            while(!blockPlaced){
+                boolean charIsAvalible = true;
+                int temp = (int)(Math.random()*110)+32;
+                char Char = ' ';
+                if(temp < (94+32)){
+                    Char = Character.toLowerCase((char) temp);
+                }else{
+                    Char = Symbols[(int)(Math.random()*Symbols.length)];
+                }
+                if(Char == ' '){
+                    Char = Symbols[(int)(Math.random()*Symbols.length)];
+                }
+                for(int num2 = 0; num2 < tempKey.length;num2 ++){
+                    if(tempKey[num2] == Char){
+                        charIsAvalible = false;
+                    }
+                }
+                if(charIsAvalible){
+                    tempKey[num] = Char;
+                    blockPlaced = true;
+                }
+            }
         }
         key = tempKey;
         return key;

@@ -13,8 +13,9 @@ public class decrypt extends encrypt
     // instance variables - replace the example below with your own
 
     private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰'};
+    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
     char[] key;
+
     public String decrypt(String input)
     {   
         key = getKey();
@@ -32,21 +33,45 @@ public class decrypt extends encrypt
         return output;
     }
 
+    private String decryptDoubles(String input)
+    {   
+        char[] array = input.toCharArray();
+        String output = "";
+        for(int num = 0; num < array.length;num ++)
+        {
+            if(array[num] == key[key.length-1]){
+                array[num] = array[num-1];
+            }
+            if(array[num] == key[key.length-2]){
+                array[num] = array[num-1];
+            }
+            output += array[num];
+        }
+        return output;
+    }
+
     private String decrypt2dArray(String input){
         String output = input;
         char[] arrayKey = new char[key.length/3];
         for(int num = 0; num < arrayKey.length; num++){
             arrayKey[num] = key[num + 56];
         }
-        System.out.println(arrayKey);
         output = input;
         char[] inputArray = input.toCharArray();
-        char[][] array = new char [input.length()][input.length()];
-        int charsLeft = (int)Math.sqrt(input.length());
-        int loopLeft =  input.length();
-        for(int numx = 0; numx < input.length(); numx++){
-            for(int numy = 0; numy < input.length(); numy++){
-                for(int num = 0 ; num < input.length(); num++){
+        int xLength = (int)Math.sqrt(input.length());
+        int yLength = (int)Math.sqrt(input.length());
+        char[][] array = new char [xLength][yLength];
+        int num = 0;
+        for(int numx = 0; numx < xLength; numx++){
+            for(int numy = 0; numy < yLength; numy++){
+                array[numx][numy] = inputArray[num];
+                num++;
+            }
+        }
+
+        for(int numx = 0; numx < xLength; numx++){
+            for(int numy = 0; numy < yLength; numy++){
+                for(num = 0; num < arrayKey.length; num++){
                     if(array[numx][numy] == arrayKey[num]){
                         array[numx][numy] = 0;
                     }
@@ -54,8 +79,8 @@ public class decrypt extends encrypt
             }
         }
         output = "";
-        for(int numx = 0; numx < input.length(); numx++){
-            for(int numy = 0; numy < input.length(); numy++){
+        for(int numx = 0; numx < xLength; numx++){
+            for(int numy = 0; numy < yLength; numy++){
                 if(array[numx][numy] != 0){
                     output += array[numx][numy];
                 }
@@ -66,8 +91,8 @@ public class decrypt extends encrypt
 
     private String decryptKey(String input)
     {
-        char[] key1 = new char[(key.length/3)];
-        char[] key2 = new char[(key.length/3)];
+        char[] key1 = new char[((key.length-2)/3)];
+        char[] key2 = new char[((key.length-2)/3)];
         for(int num =0; num < key1.length; num++){
             key1[num] = key[num];
             key2[num] = key[num+key1.length];
@@ -188,9 +213,9 @@ public class decrypt extends encrypt
         Scanner kb;
         kb = new Scanner(System.in);
         char[] key = (kb.nextLine()).toCharArray();
-        System.out.println(key.length);
+
         while(true){
-            if(key.length == 86){
+            if(key.length == 88){
                 break;
             }
             System.out.println("invalid key");
