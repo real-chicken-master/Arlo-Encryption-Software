@@ -21,17 +21,17 @@ public class decrypt extends encrypt
         key = getKey();
 
         String output = input.toLowerCase();
-        System.out.println(output);
+        
         //output = decryptDoubles(output);
-        System.out.println(output);
+
         output = decryptRotate(output);
-        System.out.println(output);
+        
         output = decryptSwap(output);
         System.out.println(output);
         output = decrypt2dArray(output);
         System.out.println(output);
         output = decryptKey(output);
-        System.out.println(output);
+
         return output;
     }
 

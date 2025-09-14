@@ -19,15 +19,15 @@ public class encrypt
         char[] key = randomKey();
 
         String output = input.toLowerCase();
-        System.out.println(output);
+
         output = encryptKey(output);
         System.out.println(output);
         output = encrypt2dArray(output);
         System.out.println(output);
         output = encryptSwap(output);
-        System.out.println(output);
+
         output = encryptRotate(output);
-        System.out.println(output);
+
         //output = encryptDoubles(output);
 
         return output;
@@ -81,12 +81,13 @@ public class encrypt
                             array[numx][numy] = arrayKey[(int)(Math.random()*arrayKey.length)];
                         }
                     }else{
-                        array[numx][numy] = arrayKey[(int)(Math.random()*arrayKey.length)];
+                        array[numx][numy] = inputArray[(input.length()-charsLeft)];
+                        charsLeft--;
                     }
-                    loopLeft--;
                 }else{
                     array[numx][numy] = arrayKey[(int)(Math.random()*arrayKey.length)];
                 }
+                loopLeft--;
             }
         }
         output = "";
