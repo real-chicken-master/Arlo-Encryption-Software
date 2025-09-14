@@ -19,16 +19,16 @@ public class encrypt
         char[] key = randomKey();
 
         String output = input.toLowerCase();
-
+        System.out.println(output);
         output = encryptKey(output);
-
+        System.out.println(output);
         output = encrypt2dArray(output);
-
+        System.out.println(output);
         output = encryptSwap(output);
-
+        System.out.println(output);
         output = encryptRotate(output);
-
-        output = encryptDoubles(output);
+        System.out.println(output);
+        //output = encryptDoubles(output);
 
         return output;
     }
@@ -57,7 +57,7 @@ public class encrypt
 
     private String encrypt2dArray(String input)
     {
-        char[] arrayKey = new char[key.length/3];
+        char[] arrayKey = new char[(key.length-2)/3];
         for(int num = 0; num < arrayKey.length; num++)
         {
             arrayKey[num] = key[num + 56];
@@ -65,10 +65,10 @@ public class encrypt
         String output = input;
         char[] inputArray = input.toCharArray();
         int charsLeft = input.length();
-        int xLength = input.length();
-        int yLength = input.length();
+        int loopLeft = input.length()*2;
+        int xLength = (int)Math.ceil(Math.sqrt(loopLeft));
+        int yLength = (int)Math.ceil(Math.sqrt(loopLeft));
         char[][] array = new char [xLength][yLength];
-        int loopLeft = input.length()*input.length();
         for(int numx = 0; numx < xLength; numx++){
             for(int numy = 0; numy < yLength; numy++){
                 if((input.length()-charsLeft) < input.length()){
@@ -99,7 +99,7 @@ public class encrypt
     }
 
     private String encryptKey(String input){
-        String output;
+        String output = "";
         System.out.println("your key is");
         System.out.println(key);
         char[] key1 = new char[((key.length-2)/3)];
@@ -116,8 +116,8 @@ public class encrypt
         for(int num =0; num < list2.length; num++){
             list2[num] = key2[num];
         }
-        output = encryptCaesar(input, key1, alphabet, list1);
-        output = encryptCaesar(output, key2, alphabet ,list2);
+        output = encryptCaesar(input, key1, alphabet, list1);;
+        output = encryptCaesar(output, key2, list1 ,list2);
         return output;
     }
 
@@ -216,6 +216,9 @@ public class encrypt
                 }else{
                     Char = Symbols[(int)(Math.random()*Symbols.length)];
                 }
+                if(Char == ' '){
+                    Char = Symbols[(int)(Math.random()*Symbols.length)];
+                }
                 for(int num2 = 0; num2 < tempKey.length;num2 ++){
                     if(tempKey[num2] == Char){
                         charIsAvalible = false;
@@ -247,6 +250,9 @@ public class encrypt
                 if(temp < (94+32)){
                     Char = Character.toLowerCase((char) temp);
                 }else{
+                    Char = Symbols[(int)(Math.random()*Symbols.length)];
+                }
+                if(Char == ' '){
                     Char = Symbols[(int)(Math.random()*Symbols.length)];
                 }
                 for(int num2 = 0; num2 < tempKey.length;num2 ++){

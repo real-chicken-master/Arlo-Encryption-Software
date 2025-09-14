@@ -21,17 +21,17 @@ public class decrypt extends encrypt
         key = getKey();
 
         String output = input.toLowerCase();
-
-        output = decryptDoubles(output);
-        
+        System.out.println(output);
+        //output = decryptDoubles(output);
+        System.out.println(output);
         output = decryptRotate(output);
-
+        System.out.println(output);
         output = decryptSwap(output);
-
+        System.out.println(output);
         output = decrypt2dArray(output);
-
+        System.out.println(output);
         output = decryptKey(output);
-        
+        System.out.println(output);
         return output;
     }
 
@@ -54,7 +54,7 @@ public class decrypt extends encrypt
 
     private String decrypt2dArray(String input){
         String output = input;
-        char[] arrayKey = new char[key.length/3];
+        char[] arrayKey = new char[(key.length-2)/3];
         for(int num = 0; num < arrayKey.length; num++){
             arrayKey[num] = key[num + 56];
         }
@@ -108,7 +108,7 @@ public class decrypt extends encrypt
             list2[num] = key2[num];
         }
         String output;
-        output = decryptCaesar(input, key2, list2, alphabet);
+        output = decryptCaesar(input, key2, list2, list1);
         output = decryptCaesar(output, key1, list1, alphabet);
         return output;
     }
