@@ -22,14 +22,14 @@ public class decrypt extends encrypt
 
         String output = input.toLowerCase();
         
-        //output = decryptDoubles(output);
+        output = decryptDoubles(output);
 
         output = decryptRotate(output);
         
         output = decryptSwap(output);
-        System.out.println(output);
+
         output = decrypt2dArray(output);
-        System.out.println(output);
+
         output = decryptKey(output);
 
         return output;

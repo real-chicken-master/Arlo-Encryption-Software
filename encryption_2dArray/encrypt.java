@@ -21,14 +21,14 @@ public class encrypt
         String output = input.toLowerCase();
 
         output = encryptKey(output);
-        System.out.println(output);
+        
         output = encrypt2dArray(output);
-        System.out.println(output);
+
         output = encryptSwap(output);
 
         output = encryptRotate(output);
 
-        //output = encryptDoubles(output);
+        output = encryptDoubles(output);
 
         return output;
     }
