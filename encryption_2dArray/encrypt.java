@@ -1,20 +1,20 @@
 import java.util.Scanner;
 
 /**
- * has all the functions for my encryption.
+ * contains everything needed for decryption.
  *
  * @author (Arlo Kennedy)
- * @version (0.1)
+ * @version (1.0)
  */
 public class encrypt
 { 
 
-    private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
-    private int amount = 0;
-    private char[] key;
+    private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    private static char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
+    private static int amount = 0;
+    private static char[] key;
 
-    public String encrypt(String input)
+    public static String encrypt(String input)
     {   
         char[] key = randomKey();
 
@@ -33,7 +33,7 @@ public class encrypt
         return output;
     }
 
-    private String encryptDoubles(String input)
+    private static String encryptDoubles(String input)
     {
         String output = input;
         char[] outputArray = output.toCharArray();
@@ -55,7 +55,7 @@ public class encrypt
         return output;
     }
 
-    private String encrypt2dArray(String input)
+    private static String encrypt2dArray(String input)
     {
         char[] arrayKey = new char[(key.length-2)/3];
         for(int num = 0; num < arrayKey.length; num++)
@@ -99,7 +99,7 @@ public class encrypt
         return output;
     }
 
-    private String encryptKey(String input){
+    private static String encryptKey(String input){
         String output = "";
         System.out.println("your key is");
         System.out.println(key);
@@ -122,7 +122,7 @@ public class encrypt
         return output;
     }
 
-    private String encryptCaesar(String input, char[] key, char[] inList, char[] outList) {
+    private static String encryptCaesar(String input, char[] key, char[] inList, char[] outList) {
         char[] inputArray = input.toCharArray();
         char[] outputArray = new char[inputArray.length];
         int amount = Character.getNumericValue(key[key.length-1]) + (Character.getNumericValue(key[key.length-2])*10);
@@ -159,7 +159,7 @@ public class encrypt
         return output;
     }
 
-    private String encryptSwap(String input) {
+    private static String encryptSwap(String input) {
         char[] myArray = input.toCharArray();
         for(int num2 = 0; num2 < myArray.length;num2 ++){
             char placeholder1 = ' ';
@@ -182,7 +182,7 @@ public class encrypt
         return output;
     }
 
-    private String encryptRotate(String input)
+    private static String encryptRotate(String input)
     {
         char[] myArray = input.toCharArray();
         char placeholder1 = ' ';
@@ -204,7 +204,7 @@ public class encrypt
         return output;
     }
 
-    private char[] randomKey(){
+    private static char[] randomKey(){
         char[] tempKey = new char[26 + 26 + 26 + 10];
         for(int num = 0; num < 26; num++){
             boolean blockPlaced = false;

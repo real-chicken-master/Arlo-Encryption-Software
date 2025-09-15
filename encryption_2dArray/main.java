@@ -1,14 +1,19 @@
 import java.util.Scanner;
 
 /**
- * the main function for encryption/decryption.
+ * the main function for encryption/decryption that handles the ui.
  *
  * @author (Arlo Kennedy)
- * @version (0.1)
+ * @version (1.0)
  */
 public class main extends decrypt
 {
-    public main()
+    private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    public main(){
+        main(null);
+    }
+
+    public static void main(String[] args)
     {   
         // the program will loop until run is false
         boolean run = true;
@@ -38,7 +43,11 @@ public class main extends decrypt
                 SwitchCase = ' ';
                 System.out.println("you have selected encrypt");
                 System.out.println("please enter the string you want to encrypt");
-                input= kb.nextLine();
+                input = kb.nextLine();
+                while(invalidinput(input)){
+                    System.out.println("please only enter charaters in the english alphatbet");
+                    input = kb.nextLine();
+                }
                 encrypted = encrypt(input);
                 System.out.println("your encrypted String is");
                 System.out.println(encrypted);
@@ -61,5 +70,22 @@ public class main extends decrypt
                 run = false;
             }
         }
+    }
+
+    private static boolean invalidinput(String input){
+        char[] array = input.toCharArray();
+        boolean temp = true;
+        for(int num = 0; num < array.length;num++){
+            Boolean temp2 = true;
+            for(int num2 = 0; num2 < alphabet.length; num2++){
+                if(array[num] == alphabet[num2]){
+                    temp2 = false;
+                }
+            }
+            if(!temp2){
+                temp = false;
+            }
+        }
+        return temp;
     }
 }

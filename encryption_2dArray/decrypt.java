@@ -3,20 +3,20 @@ import java.util.stream.Collectors;
 import java.util.Scanner;
 
 /**
- * has all the functions for my decryption.
+ * contains everything needed for decryption.
  *
  * @author (Arlo Kennedy)
- * @version (0.1)
+ * @version (1.0))
  */
 public class decrypt extends encrypt
 {
     // instance variables - replace the example below with your own
 
-    private char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    private char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
-    char[] key;
+    private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+    private static char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
+    static char[] key;
 
-    public String decrypt(String input)
+    public static String decrypt(String input)
     {   
         key = getKey();
 
@@ -35,7 +35,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decryptDoubles(String input)
+    private static String decryptDoubles(String input)
     {   
         char[] array = input.toCharArray();
         String output = "";
@@ -52,7 +52,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decrypt2dArray(String input){
+    private static String decrypt2dArray(String input){
         String output = input;
         char[] arrayKey = new char[(key.length-2)/3];
         for(int num = 0; num < arrayKey.length; num++){
@@ -91,7 +91,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decryptKey(String input)
+    private static String decryptKey(String input)
     {
         char[] key1 = new char[((key.length-2)/3)];
         char[] key2 = new char[((key.length-2)/3)];
@@ -113,7 +113,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decryptCaesar(String input, char[] key, char[] inList , char[] outList) {
+    private static String decryptCaesar(String input, char[] key, char[] inList , char[] outList) {
         char[] tempArray = input.toCharArray();
         char[] inputArray = new char[tempArray.length];
         for(int num = 0; num < inputArray.length;num++){
@@ -159,7 +159,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decryptSwap(String input) {
+    private static String decryptSwap(String input) {
         char[] myArray = input.toCharArray();
         for(int num = 0; num < myArray.length;num++){
             if(((int)myArray[num]) == 0){
@@ -188,7 +188,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private String decryptRotate(String input)
+    private static String decryptRotate(String input)
     {
         char[] myArray = input.toCharArray();
         char placeholder1 = ' ';
@@ -210,7 +210,7 @@ public class decrypt extends encrypt
         return output;
     }
 
-    private char[] getKey(){
+    private static char[] getKey(){
         System.out.println("please enter the key");
         Scanner kb;
         kb = new Scanner(System.in);
