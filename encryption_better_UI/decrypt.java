@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author (Arlo Kennedy)
  * @version (1.0))
  */
-public class decrypt extends encrypt
+public class decrypt
 {
     // instance variables - replace the example below with your own
 

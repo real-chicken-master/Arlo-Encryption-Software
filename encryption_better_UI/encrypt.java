@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author (Arlo Kennedy)
  * @version (1.0)
  */
-public class encrypt extends gui 
+public class encrypt
 { 
 
     private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
