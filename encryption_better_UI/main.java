@@ -6,13 +6,13 @@ import java.util.Scanner;
  * @author (Arlo Kennedy)
  * @version (1.0)
  */
-public class main extends decrypt 
+public class main
 {
     private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     public main(){
-        //main(null);
+        
     }
-    
+
     public static void main(String[] args)
     {   
         // the program will loop until run is false
@@ -46,12 +46,7 @@ public class main extends decrypt
             //decrypt mode
             if(SwitchCase == 'd' || SwitchCase == 'D'){
                 SwitchCase = ' ';
-                System.out.println("you have selected decrypt");
-                System.out.println("please enter the string you want to decrypt");
-                input= kb.nextLine();
-                decrypted = decrypt(input);
-                System.out.println("your decrypted String is");
-                System.out.println(decrypted);
+                decrypt();
             }
             //ask to run again
             System.out.println("enter r to run again enter anything else to exit");
@@ -63,9 +58,23 @@ public class main extends decrypt
         }
     }
 
+    public static String decrypt(){
+        String input;
+        String decrypted = "";
+        Scanner kb;
+        kb = new Scanner(System.in);
+        System.out.println("you have selected decrypt");
+        System.out.println("please enter the string you want to decrypt");
+        input= kb.nextLine();
+        //decrypted = decrypt(input);
+        System.out.println("your decrypted String is");
+        System.out.println(decrypted);
+        return decrypted;
+    }
+
     public static String encrypt(){
         String input;
-        String encrypted;
+        String encrypted = "";
         Scanner kb;
         kb = new Scanner(System.in);
         System.out.println("you have selected encrypt");
@@ -75,7 +84,7 @@ public class main extends decrypt
             System.out.println("please only enter charaters in the english alphatbet");
             input = kb.nextLine();
         }
-        encrypted = encrypt(input);
+        //encrypted = encrypt(input);
         System.out.println("your encrypted String is");
         return encrypted;
     }
