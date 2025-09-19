@@ -16,16 +16,15 @@ public class decrypt
     private static char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
     static char[] key;
 
-    public static String decrypt(String input)
+    public static String decrypt(String[] input)
     {   
-        key = getKey();
+        key = input[1].toCharArray();
+        String output = input[0].toLowerCase();
 
-        String output = input.toLowerCase();
-        
         output = decryptDoubles(output);
 
         output = decryptRotate(output);
-        
+
         output = decryptSwap(output);
 
         output = decrypt2dArray(output);
@@ -208,21 +207,5 @@ public class decrypt
             output += myArray[num];
         }
         return output;
-    }
-
-    private static char[] getKey(){
-        System.out.println("please enter the key");
-        Scanner kb;
-        kb = new Scanner(System.in);
-        char[] key = (kb.nextLine()).toCharArray();
-
-        while(true){
-            if(key.length == 88){
-                break;
-            }
-            System.out.println("invalid key");
-            key = (kb.nextLine()).toCharArray();
-        }
-        return key;
     }
 }

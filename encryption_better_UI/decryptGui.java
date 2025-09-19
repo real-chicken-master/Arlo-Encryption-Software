@@ -17,16 +17,17 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 /**
- * Write a description of class encryptGui here.
+ * Write a description of class decryptGui here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class encryptGui extends JFrame
+public class decryptGui extends JFrame
 {
     String input = "";
+    String key = "";
     String[] output = {"N/A","N/A"};
-    public encryptGui(){
+    public decryptGui(){
 
         JFrame frame = new JFrame("KES");
 
@@ -42,7 +43,7 @@ public class encryptGui extends JFrame
 
         JPanel panel1 = new JPanel();
 
-        JLabel firstText = new JLabel("you have selected encrypt please enter your string bellow");
+        JLabel firstText = new JLabel("you have selected decrypt please enter your string bellow");
         panel1.add(firstText);
 
         JPanel panel2 = new JPanel();
@@ -97,9 +98,8 @@ public class encryptGui extends JFrame
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     input = enterTextField.getText();
-                    output = encrypt.encrypt(input);
-                    keyTextField.setText(output[1]);
-                    stringTextField.setText(output[0]);
+                    String[] tempOutput = {input,key};
+                    output = decrypt.decrypt(tempOutput);
                 }
             });
 

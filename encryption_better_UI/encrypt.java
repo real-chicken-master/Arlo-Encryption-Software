@@ -17,7 +17,7 @@ public class encrypt
     public static String[] encrypt(String input)
     {   
         char[] key = randomKey();
-
+        
         String output = input.toLowerCase();
 
         output = encryptKey(output);
@@ -29,7 +29,12 @@ public class encrypt
         output = encryptRotate(output);
 
         output = encryptDoubles(output);
-        String[] outputArray = {output,key.toString()};
+        
+        String outputkey = "";
+        for(int num = 0; num < key.length; num++){
+        outputkey += key[num];
+        }
+        String[] outputArray = {output,outputkey};
         return outputArray;
     }
 
