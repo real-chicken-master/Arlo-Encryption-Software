@@ -14,7 +14,7 @@ public class encrypt
     private static int amount = 0;
     private static char[] key;
 
-    public static String encrypt(String input)
+    public static String[] encrypt(String input)
     {   
         char[] key = randomKey();
 
@@ -29,8 +29,8 @@ public class encrypt
         output = encryptRotate(output);
 
         output = encryptDoubles(output);
-
-        return output;
+        String[] outputArray = {output,key.toString()};
+        return outputArray;
     }
 
     private static String encryptDoubles(String input)
