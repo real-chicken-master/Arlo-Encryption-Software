@@ -11,6 +11,9 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 /**
  * Write a description of class encryptGui here.
  *
@@ -19,15 +22,9 @@ import javax.swing.JPanel;
  */
 public class encryptGui extends JFrame
 {
+    String input = "";
+    String[] output = {"N/A","N/A"};
     public encryptGui(){
-        main(null);
-    }
-
-    /**
-     * Constructor for objects of class encryptGui
-     */
-    public static void main(String[] args) 
-    {   
 
         JFrame frame = new JFrame("KES");
 
@@ -52,14 +49,20 @@ public class encryptGui extends JFrame
 
         JButton submitButton = new JButton("Submit");
         panel2.add(submitButton);
-
+        submitButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    input = enterTextField.getText();
+                    output = encrypt.encrypt(input);
+                    JTextField.setText(output[1]);
+                }
+            });
         JPanel panel3 = new JPanel();
         JLabel text = new JLabel("your key is:");
         panel3.add(text);
 
-        JTextField keyTextField= new JTextField("N/A",20);
+        JTextField keyTextField= new JTextField(output[1],20);
         panel3.add(keyTextField);
-        
+
         JButton copyButton1 = new JButton("Copy");
         panel3.add(copyButton1);
 
@@ -67,9 +70,9 @@ public class encryptGui extends JFrame
         JLabel stringText = new JLabel("your string is:");
         panel4.add(stringText);
 
-        JTextField stringTextField= new JTextField("N/A",20);
+        JTextField stringTextField= new JTextField(output[0],20);
         panel4.add(stringTextField);
-        
+
         JButton copyButton2 = new JButton("Copy");
         panel4.add(copyButton2);
 

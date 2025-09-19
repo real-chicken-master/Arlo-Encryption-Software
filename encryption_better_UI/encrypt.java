@@ -101,8 +101,6 @@ public class encrypt
 
     private static String encryptKey(String input){
         String output = "";
-        System.out.println("your key is");
-        System.out.println(key);
         char[] key1 = new char[((key.length-2)/3)];
         char[] key2 = new char[((key.length-2)/3)];
         for(int num =0; num < key1.length; num++){
