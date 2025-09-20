@@ -21,7 +21,6 @@ public class gui extends JFrame{
     Canvas screen;
     private JTextField inputField;
     private JButton submitbuttonE;
-    private char mode = 'm'; // m = menu, e = encrypt, d = decrypt
     /**
      * Constructor for objects of class gui
      */
@@ -54,7 +53,7 @@ public class gui extends JFrame{
                     new decryptGui();
                 }
             });
-        //panel.add(buttonD);
+        panel.add(buttonD);
         frame.add(panel);
         frame.pack();
     }

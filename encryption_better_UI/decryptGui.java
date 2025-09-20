@@ -24,9 +24,8 @@ import java.awt.datatransfer.StringSelection;
  */
 public class decryptGui extends JFrame
 {
-    String input = "";
+    String output = "";
     String key = "";
-    String[] output = {"N/A","N/A"};
     public decryptGui(){
 
         JFrame frame = new JFrame("KES");
@@ -42,71 +41,45 @@ public class decryptGui extends JFrame
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-
-        JLabel firstText = new JLabel("you have selected decrypt please enter your string bellow");
-        panel1.add(firstText);
+        JLabel titleText = new JLabel("you have selected decrypt please enter your string and key bellow");
+        panel1.add(titleText);
 
         JPanel panel2 = new JPanel();
-        JTextField enterTextField= new JTextField(30);
-        panel2.add(enterTextField);
-
-        JButton submitButton = new JButton("Submit");
-        panel2.add(submitButton);
+        JLabel stringText = new JLabel("please enter your encrypted string: ");
+        panel2.add(stringText);
+        JTextField stringTextField= new JTextField(20);
+        panel2.add(stringTextField);
 
         JPanel panel3 = new JPanel();
-        JLabel text = new JLabel("your key is:");
-        panel3.add(text);
-
-        JTextField keyTextField= new JTextField(output[1],30);
+        JLabel keyText = new JLabel("please enter your encryption key: ");
+        panel3.add(keyText);
+        JTextField keyTextField= new JTextField(20);
         panel3.add(keyTextField);
 
-        JButton copyButton1 = new JButton("Copy");
-        copyButton1.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-
-                    StringSelection stringSelection = new StringSelection(keyTextField.getText());
-
-                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-
-                    clipboard.setContents(stringSelection, null);
-                }
-            });
-
-        panel3.add(copyButton1);
         
+        JPanel panel5 = new JPanel();
+        JLabel outputText = new JLabel("here is your decrypted string: ");
+        panel5.add(outputText);
+        JTextField outputTextField= new JTextField(20);
+        panel5.add(outputTextField);
         
         JPanel panel4 = new JPanel();
-        JLabel stringText = new JLabel("your string is:");
-        panel4.add(stringText);
-
-        JTextField stringTextField= new JTextField(output[0],30);
-        panel4.add(stringTextField);
-
-        JButton copyButton2 = new JButton("Copy");
-        copyButton2.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-
-                    StringSelection stringSelection = new StringSelection(stringTextField.getText());
-
-                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-
-                    clipboard.setContents(stringSelection, null);
-                }
-            });
-        panel4.add(copyButton2);
-
+        JButton submitButton = new JButton("submit");
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    input = enterTextField.getText();
-                    String[] tempOutput = {input,key};
-                    output = decrypt.decrypt(tempOutput);
+                    String[] input = {stringTextField.getText(),keyTextField.getText()};
+                    
+                    outputTextField.setText(decrypt.decrypt(input));
                 }
             });
-
+        panel4.add(submitButton);
+        
         frame.add(panel1);
         frame.add(panel2);
         frame.add(panel3);
         frame.add(panel4);
+        frame.add(panel5);
+
         frame.pack();
     }
 }
