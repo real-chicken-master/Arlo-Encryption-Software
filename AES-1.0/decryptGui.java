@@ -103,8 +103,8 @@ public class decryptGui extends JFrame
         panel4.add(submitButton);
 
         frame.add(panel1);
-        frame.add(panel2);
         frame.add(panel3);
+        frame.add(panel2);
         frame.add(panel4);
         frame.add(panel5);  
 
