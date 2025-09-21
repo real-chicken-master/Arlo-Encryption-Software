@@ -16,12 +16,6 @@ import javax.swing.JLabel;
  * @version (1.0)
  */
 public class gui extends JFrame{
-    JMenuBar menuBar;
-    JMenu menu;
-    JMenuItem menuItem;
-    Canvas screen;
-    private JTextField inputField;
-    private JButton submitbuttonE;
     /**
      * Constructor for objects of class gui
      */
@@ -42,8 +36,16 @@ public class gui extends JFrame{
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-        JLabel introText = new JLabel("welcome to Arlo encryption software");
+        JLabel introText = new JLabel("welcome to Arlo encryption software ");
         panel1.add(introText);
+        JButton buttonDoc = new JButton("documentation");
+        panel1.add(buttonDoc);
+        buttonDoc.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new documentationGui();
+                }
+            });
+
         JPanel panel2 = new JPanel();
         panel2.setPreferredSize(new Dimension(500,500));
         JButton buttonE = new JButton("encrypt");
@@ -63,14 +65,13 @@ public class gui extends JFrame{
                             new decryptGui();
                         }
                         catch (java.awt.datatransfer.UnsupportedFlavorException ufe)
-                        {
-                        }
+                        {}
                     }
-                    catch (java.io.IOException ioe){
-                    }
+                    catch (java.io.IOException ioe){}
                 }
             });
         panel2.add(buttonD);
+
         frame.add(panel1);
         frame.add(panel2);
         frame.pack();
