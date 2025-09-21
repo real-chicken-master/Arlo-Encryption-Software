@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=encryptGui
+comment0.text=\r\n\ this\ is\ the\ gui\ that\ handles\ the\ inputs\ and\ outputs\ of\ the\ encrypt\ class.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (1.0)\r\n
+comment1.params=
+comment1.target=encryptGui()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5
