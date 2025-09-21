@@ -32,7 +32,7 @@ public class decryptGui extends JFrame
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
         frame.setLayout(new FlowLayout());
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         frame.toFront();
 

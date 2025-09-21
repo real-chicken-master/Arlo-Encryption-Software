@@ -25,7 +25,7 @@ public class documentationGui extends JFrame{
 
         frame.setLayout(new FlowLayout(FlowLayout.LEFT));
 
-        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         frame.setResizable(false);
 
