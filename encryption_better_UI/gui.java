@@ -7,12 +7,13 @@ import javax.swing.JButton;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 
 /**
- * Write a description of class gui here.
+ * this is the menu gui that allows users to open difrent guis.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (1.0)
  */
 public class gui extends JFrame{
     JMenuBar menuBar;
@@ -26,27 +27,32 @@ public class gui extends JFrame{
      */
     public gui()
     {
-        JFrame frame = new JFrame("KES");
+        JFrame frame = new JFrame("AES");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
+        frame.setLayout(new FlowLayout());
+
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         frame.setResizable(false);
-        
+
         frame.toFront();
 
         frame.setVisible(true);
 
-        JPanel panel = new JPanel();
-        panel.setPreferredSize(new Dimension(500,500));
+        JPanel panel1 = new JPanel();
+        JLabel introText = new JLabel("welcome to Arlo encryption software");
+        panel1.add(introText);
+        JPanel panel2 = new JPanel();
+        panel2.setPreferredSize(new Dimension(500,500));
         JButton buttonE = new JButton("encrypt");
         buttonE.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new encryptGui();
                 }
             });
-        panel.add(buttonE);
+        panel2.add(buttonE);
         JButton buttonD = new JButton("decrypt");
         buttonD.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -64,8 +70,9 @@ public class gui extends JFrame{
                     }
                 }
             });
-        panel.add(buttonD);
-        frame.add(panel);
+        panel2.add(buttonD);
+        frame.add(panel1);
+        frame.add(panel2);
         frame.pack();
     }
 

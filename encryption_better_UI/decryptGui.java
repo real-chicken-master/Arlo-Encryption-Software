@@ -19,16 +19,16 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.DataFlavor;
 /**
- * Write a description of class decryptGui here.
+ * this is the gui that handles the inputs and outputs of the decrypt class.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (1.0)
  */
 public class decryptGui extends JFrame
 {
     public decryptGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
 
-        JFrame frame = new JFrame("KES");
+        JFrame frame = new JFrame("decrypt AES");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
         frame.setLayout(new FlowLayout());
@@ -57,7 +57,7 @@ public class decryptGui extends JFrame
                     try{
                         stringTextField.setText((String)contents.getTransferData(DataFlavor.stringFlavor));}
                     catch(Exception a){
-                         stringTextField.setText(a.toString());
+                        stringTextField.setText(a.toString());
                     }
                 }
             });
@@ -76,7 +76,7 @@ public class decryptGui extends JFrame
                     try{
                         keyTextField.setText((String)contents.getTransferData(DataFlavor.stringFlavor));}
                     catch(Exception a){
-                         keyTextField.setText(a.toString());
+                        keyTextField.setText(a.toString());
                     }
                 }
             });

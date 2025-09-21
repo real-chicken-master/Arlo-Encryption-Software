@@ -17,10 +17,10 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 /**
- * Write a description of class encryptGui here.
+ * this is the gui that handles the inputs and outputs of the encrypt class.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (1.0)
  */
 public class encryptGui extends JFrame
 {
@@ -28,7 +28,7 @@ public class encryptGui extends JFrame
     String[] output = {"N/A","N/A"};
     public encryptGui(){
 
-        JFrame frame = new JFrame("KES");
+        JFrame frame = new JFrame("encrypt AES");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
         frame.setLayout(new FlowLayout());
