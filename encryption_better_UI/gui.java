@@ -48,9 +48,20 @@ public class gui extends JFrame{
             });
         panel.add(buttonE);
         JButton buttonD = new JButton("decrypt");
-        buttonE.addActionListener(new ActionListener() {
+        buttonD.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    new decryptGui();
+                    try
+                    {
+                        try
+                        {
+                            new decryptGui();
+                        }
+                        catch (java.awt.datatransfer.UnsupportedFlavorException ufe)
+                        {
+                        }
+                    }
+                    catch (java.io.IOException ioe){
+                    }
                 }
             });
         panel.add(buttonD);
