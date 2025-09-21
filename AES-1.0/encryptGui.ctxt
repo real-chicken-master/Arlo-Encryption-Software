@@ -9,4 +9,6 @@ comment3.params=e
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment4.params=e
 comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
-numComments=5
+comment5.params=input
+comment5.target=boolean\ validinput(java.lang.String)
+numComments=6

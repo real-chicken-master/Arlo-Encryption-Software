@@ -72,8 +72,7 @@ public class encryptGui extends JFrame
             });
 
         panel3.add(copyButton1);
-        
-        
+
         JPanel panel4 = new JPanel();
         JLabel stringText = new JLabel("your string is:");
         panel4.add(stringText);
@@ -97,7 +96,12 @@ public class encryptGui extends JFrame
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     input = enterTextField.getText();
-                    output = encrypt.encrypt(input);
+                    if(validinput(input)){
+                        output = encrypt.encrypt(input);
+                    }else{
+                        String[] temp = {"invaild input","invaild input"};
+                        output = temp;
+                    }
                     keyTextField.setText(output[1]);
                     stringTextField.setText(output[0]);
                 }
@@ -108,5 +112,22 @@ public class encryptGui extends JFrame
         frame.add(panel3);
         frame.add(panel4);
         frame.pack();
+    }
+
+    boolean validinput(String input){
+        char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        char[] inputArray = input.toCharArray();
+        for(int num = 0; num < inputArray.length; num++){
+            boolean validChar = false;
+            for(int num2 = 0; num2 < alphabet.length; num2++){
+                if(inputArray[num] == alphabet[num2]){
+                    validChar=true;
+                }
+            }
+            if(!validChar){
+                return false;
+            }
+        }
+        return true;
     }
 }
