@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.target=encrypt
+comment0.text=\r\n\ contains\ everything\ needed\ for\ decryption.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (1.0)\r\n
+comment1.params=input
+comment1.target=java.lang.String[]\ encrypt(java.lang.String)
+comment2.params=input
+comment2.target=java.lang.String\ encryptDoubles(java.lang.String)
+comment3.params=input
+comment3.target=java.lang.String\ encrypt2dArray(java.lang.String)
+comment4.params=input
+comment4.target=java.lang.String\ encryptKey(java.lang.String)
+comment5.params=input\ key\ inList\ outList
+comment5.target=java.lang.String\ encryptCaesar(java.lang.String,\ char[],\ char[],\ char[])
+comment6.params=input
+comment6.target=java.lang.String\ encryptSwap(java.lang.String)
+comment7.params=input
+comment7.target=java.lang.String\ encryptRotate(java.lang.String)
+comment8.params=
+comment8.target=char[]\ randomKey()
+numComments=9
