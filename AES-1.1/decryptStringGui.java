@@ -38,7 +38,7 @@ public class decryptStringGui extends JFrame
         UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
 
-        JFrame frame = new JFrame("decrypt AES");
+        JFrame frame = new JFrame("decrypt-AES-"+ globalValues.version);
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 

@@ -30,7 +30,7 @@ public class documentationGui extends JFrame{
         UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
 
-        JFrame frame = new JFrame("AES-Documentation");
+        JFrame frame = new JFrame("documentation-AES-"+ globalValues.version);
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
@@ -44,6 +44,11 @@ public class documentationGui extends JFrame{
         frame.toFront();
 
         frame.setVisible(true);
+
+        JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel versionText = new JLabel("version: " + globalValues.version);
+        panel1.add(versionText);
+        frame.add(panel1);
 
         JPanel panelT1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel Ttext1 = new JLabel("String:");

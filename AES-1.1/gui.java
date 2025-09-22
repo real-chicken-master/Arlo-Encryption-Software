@@ -33,7 +33,7 @@ public class gui extends JFrame{
         UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
 
-        JFrame frame = new JFrame("AES-1.1-beta");
+        JFrame frame = new JFrame("AES-"+ globalValues.version);
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
@@ -47,6 +47,9 @@ public class gui extends JFrame{
 
         frame.setVisible(true);
 
+        JLabel versionText = new JLabel("version: " + globalValues.version);
+        frame.add(versionText);
+        
         JPanel panel1 = new JPanel();
         JLabel introText = new JLabel("welcome to Arlo encryption software ");
         panel1.add(introText);

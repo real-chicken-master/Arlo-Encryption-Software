@@ -16,7 +16,7 @@ public class globalValues
     public static Color textColor = new Color(0,0,0);
     public static Color buttonColor = new Color(210,210,210);
     public static Color buttonTextColor = new Color(0,0,0);
-    int lineNumber = 0;
+    public static double version = 1.1;
     public globalValues() throws FileNotFoundException {
         Scanner reader = new Scanner( new File("config.txt"));
         boolean buttonTextDecleared = false;
@@ -54,8 +54,7 @@ public class globalValues
                         buttonTextDecleared = true;
                     }
                 }
-            }catch(Exception e){
-            }
+            }catch(Exception e){}
         }
         if(!buttonTextDecleared){
             buttonTextColor = textColor;

@@ -38,7 +38,7 @@ public class encryptStringGui extends JFrame
         UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
 
-        JFrame frame = new JFrame("encrypt AES");
+        JFrame frame = new JFrame("encrypt-AES-"+ globalValues.version);
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
