@@ -19,19 +19,21 @@ public class globalValues
         Scanner reader = new Scanner( new File("config.txt"));
         while (reader.hasNextLine()){
             String nextLine = reader.nextLine();
-            if(nextLine.contains("background") && nextLine.contains("=")){
-                String[] splitLine = (nextLine).split(",");
-                int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                background = new Color(red,blue,green);
-            }
-            if(nextLine.contains("text") && nextLine.contains("=")){
-                String[] splitLine = (nextLine).split(",");
-                int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                text = new Color(red,blue,green);
+            if(!nextLine.contains("//")){
+                if(nextLine.contains("background") && nextLine.contains("=")){
+                    String[] splitLine = (nextLine).split(",");
+                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                    background = new Color(red,blue,green);
+                }
+                if(nextLine.contains("text") && nextLine.contains("=")){
+                    String[] splitLine = (nextLine).split(",");
+                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                    text = new Color(red,blue,green);
+                }
             }
         }
         reader.close();
