@@ -1,8 +1,10 @@
-//any lines with // will not be read
+//any lines with // are comments and will not be used
 //all colors are in (R,G,B) format
 //the background color
 background = (200,230,230)
 //the text color
 text = (0,0,0)
 //button color
-button = (210,210,210)
+buttonBackground = (210,210,210)
+//comment out the next line to use text color as button text color
+buttonText = (0,0,0)

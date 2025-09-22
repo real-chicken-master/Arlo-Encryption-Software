@@ -29,12 +29,13 @@ public class decryptStringGui extends JFrame
     Color backgroundColor = globalValues.backgroundColor;
     Color textColor = globalValues.textColor; 
     Color buttonColor = globalValues.buttonColor;
+    Color buttonTextColor = globalValues.buttonTextColor;
     public decryptStringGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
         UIManager.put("Button.background", buttonColor);
         UIManager.put("Panel.background", backgroundColor);
         UIManager.put("Frame.background", backgroundColor);
         UIManager.put("Label.foreground", textColor);
-        UIManager.put("Button.foreground", textColor);
+        UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
 
         JFrame frame = new JFrame("decrypt AES");
