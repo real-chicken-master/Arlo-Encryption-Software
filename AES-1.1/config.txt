@@ -4,3 +4,5 @@
 background = (200,230,230)
 //the text color
 text = (0,0,0)
+//button color
+button = (210,210,210)

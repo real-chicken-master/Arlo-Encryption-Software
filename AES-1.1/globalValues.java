@@ -12,8 +12,9 @@ import java.io.FileNotFoundException;
  */
 public class globalValues
 {
-    public static Color background = new Color(200,230,230);
-    public static Color text = new Color(0,0,0);
+    public static Color backgroundColor = new Color(200,230,230);
+    public static Color textColor = new Color(0,0,0);
+    public static Color buttonColor = new Color(100,100,100);
     int lineNumber = 0;
     public globalValues() throws FileNotFoundException {
         Scanner reader = new Scanner( new File("config.txt"));
@@ -25,14 +26,21 @@ public class globalValues
                     int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
                     int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
                     int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    background = new Color(red,blue,green);
+                    backgroundColor = new Color(red,blue,green);
                 }
                 if(nextLine.contains("text") && nextLine.contains("=")){
                     String[] splitLine = (nextLine).split(",");
                     int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
                     int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
                     int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    text = new Color(red,blue,green);
+                    textColor = new Color(red,blue,green);
+                }
+                 if(nextLine.contains("button") && nextLine.contains("=")){
+                    String[] splitLine = (nextLine).split(",");
+                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                    buttonColor = new Color(red,blue,green);
                 }
             }
         }

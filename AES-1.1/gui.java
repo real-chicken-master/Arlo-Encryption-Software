@@ -20,11 +20,19 @@ public class gui extends JFrame{
     /**
      * Constructor for objects of class gui
      */
-    Color background = globalValues.background;
-    Color text = globalValues.text; 
+    Color backgroundColor = globalValues.backgroundColor;
+    Color textColor = globalValues.textColor; 
+    Color buttonColor = globalValues.buttonColor;
     public gui()
-    {
-        JFrame frame = new JFrame("AES");
+    {   
+        UIManager.put("Button.background", buttonColor);
+        UIManager.put("Panel.background", backgroundColor);
+        UIManager.put("Frame.background", backgroundColor);
+        UIManager.put("Label.foreground", textColor);
+        UIManager.put("Button.foreground", textColor);
+        UIManager.put("TextField.foreground", textColor);
+
+        JFrame frame = new JFrame("AES-1.1-beta");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
@@ -39,12 +47,9 @@ public class gui extends JFrame{
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-        panel1.setBackground(background);
         JLabel introText = new JLabel("welcome to Arlo encryption software ");
-        introText.setForeground(text);
         panel1.add(introText);
         JButton buttonDoc = new JButton("documentation");
-        buttonDoc.setForeground(text);
         panel1.add(buttonDoc);
         buttonDoc.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -53,10 +58,8 @@ public class gui extends JFrame{
             });
 
         JPanel panel2 = new JPanel();
-        panel2.setBackground(background);
         panel2.setPreferredSize(new Dimension(500,500));
         JButton buttonE = new JButton("encrypt");
-        buttonE.setForeground(text);
         buttonE.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new encryptStringGui();
@@ -64,7 +67,6 @@ public class gui extends JFrame{
             });
         panel2.add(buttonE);
         JButton buttonD = new JButton("decrypt");
-        buttonD.setForeground(text);
         buttonD.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     try
@@ -83,7 +85,6 @@ public class gui extends JFrame{
 
         frame.add(panel1);
         frame.add(panel2);
-        frame.getContentPane().setBackground(background);
         frame.pack();
     }
 

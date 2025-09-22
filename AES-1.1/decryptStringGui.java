@@ -26,18 +26,25 @@ import java.awt.datatransfer.DataFlavor;
  */
 public class decryptStringGui extends JFrame
 {
-    Color background = globalValues.background;
-    Color text = globalValues.text; 
+    Color backgroundColor = globalValues.backgroundColor;
+    Color textColor = globalValues.textColor; 
+    Color buttonColor = globalValues.buttonColor;
     public decryptStringGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
+        UIManager.put("Button.background", buttonColor);
+        UIManager.put("Panel.background", backgroundColor);
+        UIManager.put("Frame.background", backgroundColor);
+        UIManager.put("Label.foreground", textColor);
+        UIManager.put("Button.foreground", textColor);
+        UIManager.put("TextField.foreground", textColor);
 
         JFrame frame = new JFrame("decrypt AES");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-        
-        frame.getContentPane().setBackground(background);
-        
+
+        frame.getContentPane().setBackground(backgroundColor);
+
         frame.setLayout(new FlowLayout());
-        
+
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         frame.toFront();
@@ -47,21 +54,15 @@ public class decryptStringGui extends JFrame
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-        panel1.setBackground(background);
         JLabel titleText = new JLabel("you have selected decrypt please enter your string and key bellow");
-        titleText.setForeground(text);
         panel1.add(titleText);
 
         JPanel panel2 = new JPanel();
-        panel2.setBackground(background);
         JLabel stringText = new JLabel("enter your encrypted string: ");
-        stringText.setForeground(text);
         panel2.add(stringText);
-        JTextField stringTextField= new JTextField(19);
-        stringTextField.setForeground(text);
+        JTextField stringTextField = new JTextField(19);
         panel2.add(stringTextField);
         JButton pasteButton1= new JButton("paste");
-        pasteButton1.setForeground(text);
         pasteButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -76,15 +77,11 @@ public class decryptStringGui extends JFrame
         panel2.add(pasteButton1);
 
         JPanel panel3 = new JPanel();
-        panel3.setBackground(background);
         JLabel keyText = new JLabel(" enter your encryption key: ");
-        keyText.setForeground(text);
         panel3.add(keyText);
         JTextField keyTextField= new JTextField(19);
-        keyTextField.setForeground(text);
         panel3.add(keyTextField);
         JButton pasteButton2 = new JButton("paste");
-        pasteButton2.setForeground(text);
         pasteButton2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -99,18 +96,14 @@ public class decryptStringGui extends JFrame
         panel3.add(pasteButton2);
 
         JPanel panel5 = new JPanel();
-        panel5.setBackground(background);
         JLabel outputText = new JLabel("your decrypted string: ");
-        outputText.setForeground(text);
         panel5.add(outputText);
         JTextField outputTextField= new JTextField(20);
-        outputTextField.setForeground(text);
+        outputTextField.setForeground(textColor);
         panel5.add(outputTextField);
 
         JPanel panel4 = new JPanel();
-        panel4.setBackground(background);
         JButton submitButton = new JButton("submit");
-        submitButton.setForeground(text);
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String[] input = {stringTextField.getText(),keyTextField.getText()};

@@ -24,17 +24,22 @@ import java.awt.datatransfer.StringSelection;
  */
 public class encryptStringGui extends JFrame
 {
-    Color background = globalValues.background;
-    Color textcolor = globalValues.text; 
+    Color backgroundColor = globalValues.backgroundColor;
+    Color textColor = globalValues.textColor; 
+    Color buttonColor = globalValues.buttonColor;
     String input = "";
     String[] output = {"N/A","N/A"};
     public encryptStringGui(){
+        UIManager.put("Button.background", buttonColor);
+        UIManager.put("Panel.background", backgroundColor);
+        UIManager.put("Frame.background", backgroundColor);
+        UIManager.put("Label.foreground", textColor);
+        UIManager.put("Button.foreground", textColor);
+        UIManager.put("TextField.foreground", textColor);
 
         JFrame frame = new JFrame("encrypt AES");
 
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
-        frame.getContentPane().setBackground(background);
 
         frame.setLayout(new FlowLayout());
 
@@ -47,34 +52,25 @@ public class encryptStringGui extends JFrame
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel();
-        panel1.setBackground(background);
         JLabel firstText = new JLabel("you have selected encrypt please enter your string bellow");
-        firstText.setForeground(textcolor);
         panel1.add(firstText);
 
         JPanel panel2 = new JPanel();
-        panel2.setBackground(background);
         JTextField enterTextField= new JTextField(30);
-        enterTextField.setForeground(textcolor);
         panel2.add(enterTextField);
 
         JButton submitButton = new JButton("Submit");
-        submitButton.setForeground(textcolor);
 
         panel2.add(submitButton);
 
         JPanel panel3 = new JPanel();
-        panel3.setBackground(background);
         JLabel text = new JLabel("your key is:");
-        text.setForeground(textcolor);
         panel3.add(text);
 
         JTextField keyTextField= new JTextField(output[1],30);
-        keyTextField.setForeground(textcolor);
         panel3.add(keyTextField);
 
         JButton copyButton1 = new JButton("Copy");
-        copyButton1.setForeground(textcolor);
         copyButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 
@@ -89,17 +85,13 @@ public class encryptStringGui extends JFrame
         panel3.add(copyButton1);
 
         JPanel panel4 = new JPanel();
-        panel4.setBackground(background);
         JLabel stringText = new JLabel("your string is:");
-        stringText.setForeground(textcolor);
         panel4.add(stringText);
 
         JTextField stringTextField= new JTextField(output[0],30);
-        stringTextField.setForeground(textcolor);
         panel4.add(stringTextField);
 
         JButton copyButton2 = new JButton("Copy");
-        copyButton2.setForeground(textcolor);
         copyButton2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 
@@ -138,6 +130,9 @@ public class encryptStringGui extends JFrame
         char[] inputArray = input.toCharArray();
         for(int num = 0; num < inputArray.length; num++){
             boolean validChar = false;
+            if(inputArray[num] == ' '){
+                validChar = true;
+            }
             for(int num2 = 0; num2 < alphabet.length; num2++){
                 if(inputArray[num] == alphabet[num2]){
                     validChar=true;
