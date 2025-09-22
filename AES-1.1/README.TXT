@@ -5,7 +5,7 @@ program and information about the creator.
 
 PROJECT TITLE: Kennedy encryption software.
 PURPOSE OF PROJECT: to encrypt a string with hopfully unbreakable encyption.
-VERSION or DATE: 1.0
+VERSION or DATE: 1.1
 HOW TO START THIS PROJECT: run the main function
 AUTHORS: Arlo Kennedy
 USER INSTRUCTIONS:

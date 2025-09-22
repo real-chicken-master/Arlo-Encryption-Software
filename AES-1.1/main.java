@@ -1,13 +1,24 @@
 
 /**
- * Write a description of class main here.
+ * the main class to start up the gui.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo)
+ * @version (1.1)
  */
 public class main
 {
-    public static void main(String[] args){
+    public main() {
+        main(null);
+    }
+
+    public static void main(String[] args) {
+        try
+        {
+            new globalValues();
+        }
+        catch (java.io.FileNotFoundException fnfe)
+        {}
+
         new gui();
     }
 }

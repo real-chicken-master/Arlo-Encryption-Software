@@ -20,12 +20,12 @@ import java.awt.datatransfer.StringSelection;
  * this is the gui that handles the inputs and outputs of the encrypt class.
  *
  * @author (Arlo Kennedy)
- * @version (1.0)
+ * @version (1.1)
  */
 public class encryptGui extends JFrame
 {
     Color background = globalValues.background;
-    Color text = globalValues.text; 
+    Color textcolor = globalValues.text; 
     String input = "";
     String[] output = {"N/A","N/A"};
     public encryptGui(){
@@ -49,25 +49,32 @@ public class encryptGui extends JFrame
         JPanel panel1 = new JPanel();
         panel1.setBackground(background);
         JLabel firstText = new JLabel("you have selected encrypt please enter your string bellow");
+        firstText.setForeground(textcolor);
         panel1.add(firstText);
 
         JPanel panel2 = new JPanel();
         panel2.setBackground(background);
         JTextField enterTextField= new JTextField(30);
+        enterTextField.setForeground(textcolor);
         panel2.add(enterTextField);
 
         JButton submitButton = new JButton("Submit");
+        submitButton.setForeground(textcolor);
+
         panel2.add(submitButton);
 
         JPanel panel3 = new JPanel();
         panel3.setBackground(background);
         JLabel text = new JLabel("your key is:");
+        text.setForeground(textcolor);
         panel3.add(text);
 
         JTextField keyTextField= new JTextField(output[1],30);
+        keyTextField.setForeground(textcolor);
         panel3.add(keyTextField);
 
         JButton copyButton1 = new JButton("Copy");
+        copyButton1.setForeground(textcolor);
         copyButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 
@@ -84,12 +91,15 @@ public class encryptGui extends JFrame
         JPanel panel4 = new JPanel();
         panel4.setBackground(background);
         JLabel stringText = new JLabel("your string is:");
+        stringText.setForeground(textcolor);
         panel4.add(stringText);
 
         JTextField stringTextField= new JTextField(output[0],30);
+        stringTextField.setForeground(textcolor);
         panel4.add(stringTextField);
 
         JButton copyButton2 = new JButton("Copy");
+        copyButton2.setForeground(textcolor);
         copyButton2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
 

@@ -49,15 +49,19 @@ public class decryptGui extends JFrame
         JPanel panel1 = new JPanel();
         panel1.setBackground(background);
         JLabel titleText = new JLabel("you have selected decrypt please enter your string and key bellow");
+        titleText.setForeground(text);
         panel1.add(titleText);
 
         JPanel panel2 = new JPanel();
         panel2.setBackground(background);
         JLabel stringText = new JLabel("enter your encrypted string: ");
+        stringText.setForeground(text);
         panel2.add(stringText);
         JTextField stringTextField= new JTextField(19);
+        stringTextField.setForeground(text);
         panel2.add(stringTextField);
         JButton pasteButton1= new JButton("paste");
+        pasteButton1.setForeground(text);
         pasteButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -74,10 +78,13 @@ public class decryptGui extends JFrame
         JPanel panel3 = new JPanel();
         panel3.setBackground(background);
         JLabel keyText = new JLabel(" enter your encryption key: ");
+        keyText.setForeground(text);
         panel3.add(keyText);
         JTextField keyTextField= new JTextField(19);
+        keyTextField.setForeground(text);
         panel3.add(keyTextField);
         JButton pasteButton2 = new JButton("paste");
+        pasteButton2.setForeground(text);
         pasteButton2.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
@@ -94,13 +101,16 @@ public class decryptGui extends JFrame
         JPanel panel5 = new JPanel();
         panel5.setBackground(background);
         JLabel outputText = new JLabel("your decrypted string: ");
+        outputText.setForeground(text);
         panel5.add(outputText);
         JTextField outputTextField= new JTextField(20);
+        outputTextField.setForeground(text);
         panel5.add(outputTextField);
 
         JPanel panel4 = new JPanel();
         panel4.setBackground(background);
         JButton submitButton = new JButton("submit");
+        submitButton.setForeground(text);
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String[] input = {stringTextField.getText(),keyTextField.getText()};
