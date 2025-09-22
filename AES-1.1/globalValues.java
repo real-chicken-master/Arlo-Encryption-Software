@@ -22,36 +22,39 @@ public class globalValues
         boolean buttonTextDecleared = false;
         while (reader.hasNextLine()){
             String nextLine = reader.nextLine();
-            if(!nextLine.contains("//")){
-                if(nextLine.contains("background") && nextLine.contains("=")){
-                    String[] splitLine = (nextLine).split(",");
-                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    backgroundColor = new Color(red,blue,green);
+            try{
+                if(!nextLine.contains("//")){
+                    if(nextLine.contains("background") && nextLine.contains("=")){
+                        String[] splitLine = (nextLine).split(",");
+                        int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                        int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                        int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                        backgroundColor = new Color(red,blue,green);
+                    }
+                    if(nextLine.contains("text") && nextLine.contains("=")){
+                        String[] splitLine = (nextLine).split(",");
+                        int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                        int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                        int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                        textColor = new Color(red,blue,green);
+                    }
+                    if(nextLine.contains("buttonBackground") && nextLine.contains("=")){
+                        String[] splitLine = (nextLine).split(",");
+                        int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                        int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                        int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                        buttonColor = new Color(red,blue,green);
+                    }
+                    if(nextLine.contains("buttonText") && nextLine.contains("=")){
+                        String[] splitLine = (nextLine).split(",");
+                        int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
+                        int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
+                        int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
+                        buttonTextColor = new Color(red,blue,green);
+                        buttonTextDecleared = true;
+                    }
                 }
-                if(nextLine.contains("text") && nextLine.contains("=")){
-                    String[] splitLine = (nextLine).split(",");
-                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    textColor = new Color(red,blue,green);
-                }
-                if(nextLine.contains("buttonBackground") && nextLine.contains("=")){
-                    String[] splitLine = (nextLine).split(",");
-                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    buttonColor = new Color(red,blue,green);
-                }
-                if(nextLine.contains("buttonText") && nextLine.contains("=")){
-                    String[] splitLine = (nextLine).split(",");
-                    int red = Integer.parseInt(splitLine[0].replaceAll("[\\D]", ""));
-                    int green = Integer.parseInt(splitLine[1].replaceAll("[\\D]", ""));
-                    int blue = Integer.parseInt(splitLine[2].replaceAll("[\\D]", ""));
-                    buttonTextColor = new Color(red,blue,green);
-                    buttonTextDecleared = true;
-                }
+            }catch(Exception e){
             }
         }
         if(!buttonTextDecleared){
