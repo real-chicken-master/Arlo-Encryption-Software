@@ -24,11 +24,11 @@ import java.awt.datatransfer.DataFlavor;
  * @author (Arlo Kennedy)
  * @version (1.0)
  */
-public class decryptGui extends JFrame
+public class decryptStringGui extends JFrame
 {
     Color background = globalValues.background;
     Color text = globalValues.text; 
-    public decryptGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
+    public decryptStringGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
 
         JFrame frame = new JFrame("decrypt AES");
 
@@ -115,7 +115,7 @@ public class decryptGui extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     String[] input = {stringTextField.getText(),keyTextField.getText()};
                     if(validKey(input[1])){
-                        outputTextField.setText(decrypt.decrypt(input));
+                        outputTextField.setText(decryptString.decryptString(input));
                     }else{
                         outputTextField.setText("invalid key");
                     }

@@ -59,7 +59,7 @@ public class gui extends JFrame{
         buttonE.setForeground(text);
         buttonE.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    new encryptGui();
+                    new encryptStringGui();
                 }
             });
         panel2.add(buttonE);
@@ -71,7 +71,7 @@ public class gui extends JFrame{
                     {
                         try
                         {
-                            new decryptGui();
+                            new decryptStringGui();
                         }
                         catch (java.awt.datatransfer.UnsupportedFlavorException ufe)
                         {}

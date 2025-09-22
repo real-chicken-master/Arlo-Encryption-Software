@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.target=decryptGui
+comment0.target=decryptStringGui
 comment0.text=\r\n\ this\ is\ the\ gui\ that\ handles\ the\ inputs\ and\ outputs\ of\ the\ decrypt\ class.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (1.0)\r\n
 comment1.params=
-comment1.target=decryptGui()
+comment1.target=decryptStringGui()
 comment2.params=e
 comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment3.params=e

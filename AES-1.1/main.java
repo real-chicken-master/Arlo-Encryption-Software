@@ -1,4 +1,4 @@
-
+import javax.swing.JOptionPane;
 /**
  * the main class to start up the gui.
  *
@@ -17,8 +17,15 @@ public class main
             new globalValues();
         }
         catch (java.io.FileNotFoundException fnfe)
-        {}
-
-        new gui();
+        {
+            JOptionPane.showMessageDialog(null, "config file not found");
+        }
+        try
+        {
+            new gui();
+        } catch (Exception e)
+        {
+            JOptionPane.showMessageDialog(null, "AES quit unexpectedly");
+        }
     }
 }

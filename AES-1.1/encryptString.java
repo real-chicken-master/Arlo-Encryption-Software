@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author (Arlo Kennedy)
  * @version (1.1)
  */
-public class encrypt
+public class encryptString
 { 
 
     private static char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -14,7 +14,7 @@ public class encrypt
     private static int amount = 0;
     private static char[] key;
 
-    public static String[] encrypt(String input)
+    public static String[] encryptString(String input)
     {   
         char[] key = randomKey();
         

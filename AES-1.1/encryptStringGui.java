@@ -22,13 +22,13 @@ import java.awt.datatransfer.StringSelection;
  * @author (Arlo Kennedy)
  * @version (1.1)
  */
-public class encryptGui extends JFrame
+public class encryptStringGui extends JFrame
 {
     Color background = globalValues.background;
     Color textcolor = globalValues.text; 
     String input = "";
     String[] output = {"N/A","N/A"};
-    public encryptGui(){
+    public encryptStringGui(){
 
         JFrame frame = new JFrame("encrypt AES");
 
@@ -116,7 +116,7 @@ public class encryptGui extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     input = enterTextField.getText();
                     if(validinput(input)){
-                        output = encrypt.encrypt(input);
+                        output = encryptString.encryptString(input);
                     }else{
                         String[] temp = {"invaild input","invaild input"};
                         output = temp;

@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author (Arlo Kennedy)
  * @version (1.1)
  */
-public class decrypt
+public class decryptString
 {
     // instance variables - replace the example below with your own
 
@@ -16,7 +16,7 @@ public class decrypt
     private static char[] Symbols = {'¦','©','®','°','҂','؎','؏','۞','۩','⏻','࿊','࿋','࿌','⇆','⌀','⇯','⌚','⌛','⌘','⌬','⌨','⌹','⍟','⍝','⎆','⏰','⎚','␥','╳','☢'};
     static char[] key;
 
-    public static String decrypt(String[] input)
+    public static String decryptString(String[] input)
     {   
         key = input[1].toCharArray();
         String output = input[0].toLowerCase();
