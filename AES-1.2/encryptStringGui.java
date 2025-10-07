@@ -115,7 +115,7 @@ public class encryptStringGui extends JFrame
                         output = temp;
                     }
                     keyTextField.setText(output[1]);
-                    stringTextField.setText(output[0]);
+                    stringTextField.setText(output[0].toLowerCase());
                 }
             });
 
@@ -128,7 +128,7 @@ public class encryptStringGui extends JFrame
 
     boolean validinput(String input){
         char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-        char[] inputArray = input.toCharArray();
+        char[] inputArray = (input.toLowerCase()).toCharArray();
         for(int num = 0; num < inputArray.length; num++){
             boolean validChar = false;
             if(inputArray[num] == ' '){
