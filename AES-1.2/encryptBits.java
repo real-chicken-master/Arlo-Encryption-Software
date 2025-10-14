@@ -11,7 +11,8 @@ public class encryptBits
     {
         String key = randomKey();
         String output = input;
-        System.out.println(encrypt2dArray(output, key.toCharArray()));
+        output = encrypt2dArray(output, key.toCharArray());
+        System.out.println(output);
         String[] outputArray = {output, key};
         return outputArray;
     }
@@ -23,8 +24,6 @@ public class encryptBits
         char[] tempArray = output.toCharArray();
         char[][] tempArray2 = new char[xLength][yLength];
         int num = 0;
-        System.out.println(tempArray);
-        System.out.println(rotate(tempArray,9));
         for(int x = 0; x < xLength; x++){
             for(int y = 0; y < yLength; y++){
                 if(num < tempArray.length){
@@ -33,15 +32,27 @@ public class encryptBits
                 num++;
             }
         }
-        for(num = 0; num < (key.length/2); num++){
-            char[][] tempArray3 = new char[xLength][yLength];
-            int num2 = 0;
-            
+        int num2 = 0;
+        for(num = 0; num < (key.length/2); num += 2){
+            char[][] tempArray3 = tempArray2;
+            num2 += Character.getNumericValue(key[num+1]);
+            while(num2 >= xLength){
+                num2 -= xLength;
+            }
+            tempArray3[num2] = rotate(tempArray2[num2],Character.getNumericValue(key[num]));
             tempArray2 = tempArray3;
         }
+        output = "";
+        for(int x = 0; x < xLength; x++){
+            for(int y = 0; y < yLength; y++){
+                if(tempArray2[x][y] == '1' || tempArray2[x][y] == '0'){
+                    output += tempArray2[x][y];
+                }
+            }
+        } 
         return output;
     }
-    
+
     private static char[] rotate(char[] input, int num){
         char[] output = new char[input.length];
         for(int num2 = 0; num2 < input.length; num2++){
@@ -53,7 +64,7 @@ public class encryptBits
         }
         return output;
     }
-    
+
     private static String randomKey(){
         String output = "";
         int num = 0;
