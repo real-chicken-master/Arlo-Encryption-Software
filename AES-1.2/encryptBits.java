@@ -16,6 +16,15 @@ public class encryptBits
         return outputArray;
     }
 
+    private static String encryptInvert(String input,char[] key){
+        String output = input;
+        char[] temparray = output.toCharArray(); 
+        for(int num = 0; num < temparray.length; num ++){
+            
+        }
+        return output;
+    }
+    
     private static String encrypt2dArray(String input,char[] key){
         String output = input;
         int xLength = (int)Math.ceil(Math.sqrt(input.length()));
@@ -32,7 +41,7 @@ public class encryptBits
             }
         }
         int num2 = 0;
-        for(num = 0; num < (key.length/2); num += 2){
+        for(num = 0; num < 12; num += 2){
             char[][] tempArray3 = tempArray2;
             num2 += Character.getNumericValue(key[num+1]);
             while(num2 >= xLength){
@@ -68,7 +77,12 @@ public class encryptBits
         String output = "";
         int num = 0;
         for(int x = 0; x < 12; x++){
-            num = (int)(Math.random()*9);
+            num = (int)Math.ceil(Math.random()*9);
+            output += num;
+        }
+        
+        for(int x = 0; x < 6; x++){
+            num = (int)Math.floor(Math.random()*2);
             output += num;
         }
         return output;
