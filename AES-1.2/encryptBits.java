@@ -12,7 +12,6 @@ public class encryptBits
         String key = randomKey();
         String output = input;
         output = encrypt2dArray(output, key.toCharArray());
-        System.out.println(output);
         String[] outputArray = {output, key};
         return outputArray;
     }
@@ -39,8 +38,8 @@ public class encryptBits
             while(num2 >= xLength){
                 num2 -= xLength;
             }
-            tempArray3[num2] = rotate(tempArray2[num2],Character.getNumericValue(key[num]));
-            tempArray2 = tempArray3;
+            tempArray3[num2] = Xrotate(tempArray2[num2],Character.getNumericValue(key[num]));
+            tempArray2[num2] = tempArray3[num2];
         }
         output = "";
         for(int x = 0; x < xLength; x++){
@@ -53,7 +52,7 @@ public class encryptBits
         return output;
     }
 
-    private static char[] rotate(char[] input, int num){
+    private static char[] Xrotate(char[] input, int num){
         char[] output = new char[input.length];
         for(int num2 = 0; num2 < input.length; num2++){
             int modifier = 0;
