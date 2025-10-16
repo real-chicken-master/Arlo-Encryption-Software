@@ -20,7 +20,7 @@ import java.awt.datatransfer.StringSelection;
  * this is the gui that handles the inputs and outputs of the encrypt class.
  *
  * @author (Arlo Kennedy)
- * @version (1.1)
+ * @version (1.2)
  */
 public class encryptStringGui extends JFrame
 {

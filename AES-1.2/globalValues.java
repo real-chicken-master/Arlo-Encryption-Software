@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
  * this is to use the same color pallet across the whole gui.
  *
  * @author (Arlo Kennedy)
- * @version (1.1)
+ * @version (1.2)
  */
 public class globalValues
 {
@@ -16,7 +16,7 @@ public class globalValues
     public static Color textColor = new Color(0,0,0);
     public static Color buttonColor = new Color(210,210,210);
     public static Color buttonTextColor = new Color(0,0,0);
-    public static double version = 1.1;
+    public static double version = 1.2;
     public globalValues() throws FileNotFoundException {
         Scanner reader = new Scanner( new File("config.txt"));
         boolean buttonTextDecleared = false;

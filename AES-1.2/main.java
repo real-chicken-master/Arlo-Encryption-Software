@@ -3,7 +3,7 @@ import javax.swing.JOptionPane;
  * the main class to start up the gui.
  *
  * @author (Arlo)
- * @version (1.1)
+ * @version (1.2)
  */
 public class main
 {

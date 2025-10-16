@@ -6,7 +6,7 @@ import java.util.Scanner;
  * contains everything needed for decryption.
  *
  * @author (Arlo Kennedy)
- * @version (1.1)
+ * @version (1.2)
  */
 public class decryptString
 {

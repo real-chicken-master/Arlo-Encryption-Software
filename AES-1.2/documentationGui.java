@@ -14,7 +14,7 @@ import java.awt.FlowLayout;
  * this is the menu gui that allows users to open difrent guis.
  *
  * @author (Arlo Kennedy)
- * @version (1.1)
+ * @version (1.2)
  */
 public class documentationGui extends JFrame{
     Color backgroundColor = globalValues.backgroundColor;

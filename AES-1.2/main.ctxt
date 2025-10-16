@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=main
-comment0.text=\r\n\ the\ main\ class\ to\ start\ up\ the\ gui.\r\n\r\n\ @author\ (Arlo)\r\n\ @version\ (1.1)\r\n
+comment0.text=\r\n\ the\ main\ class\ to\ start\ up\ the\ gui.\r\n\r\n\ @author\ (Arlo)\r\n\ @version\ (1.2)\r\n
 comment1.params=
 comment1.target=main()
 comment2.params=args

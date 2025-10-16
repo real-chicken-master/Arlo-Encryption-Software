@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=encryptStringGui
-comment0.text=\r\n\ this\ is\ the\ gui\ that\ handles\ the\ inputs\ and\ outputs\ of\ the\ encrypt\ class.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (1.1)\r\n
+comment0.text=\r\n\ this\ is\ the\ gui\ that\ handles\ the\ inputs\ and\ outputs\ of\ the\ encrypt\ class.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (1.2)\r\n
 comment1.params=
 comment1.target=encryptStringGui()
 comment2.params=e

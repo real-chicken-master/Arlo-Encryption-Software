@@ -22,7 +22,7 @@ import java.awt.datatransfer.DataFlavor;
  * this is the gui that handles the inputs and outputs of the decrypt class.
  *
  * @author (Arlo Kennedy)
- * @version (1.0)
+ * @version (1.2)
  */
 public class decryptStringGui extends JFrame
 {

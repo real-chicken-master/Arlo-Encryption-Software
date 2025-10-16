@@ -2,8 +2,8 @@
 /**
  * Write a description of class encryptBits here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Arlo Kennedy)
+ * @version (1.2)
  */
 public class encryptBits
 {
