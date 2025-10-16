@@ -1,27 +1,26 @@
 
 /**
- * Write a description of class encryptBits here.
+ * Write a description of class decryptBits here.
  *
  * @author (your name)
  * @version (a version number or a date)
  */
-public class encryptBits
+public class decryptBits
 {
-    public static String[] encryptBits(String input)
+    public static String decryptBits(String[] input)
     {
-        String key = randomKey();
-        String output = input;
-        output = encrypt2dArray(output, key.toCharArray());
-        output = encryptInvert(output, key.toCharArray());
-        String[] outputArray = {output, key};
-        return outputArray;
+        String key = input[1];
+        String output = input[0];
+        output = decryptInvert(output, key.toCharArray());
+        output = decrypt2dArray(output, key.toCharArray());
+        return output;
     }
 
-    private static String encryptInvert(String input,char[] key){
+    private static String decryptInvert(String input,char[] key){
         String output = input;
         char[] temparray = output.toCharArray(); 
         int num = 12;
-        for(int tempnum = 0; tempnum < temparray.length; tempnum ++){
+        for(int tempnum = 0; tempnum < temparray.length; tempnum++){
             if(key[num]=='1'){
                 if(temparray[tempnum] == '0'){
                     temparray[tempnum] = '1';
@@ -42,7 +41,7 @@ public class encryptBits
         return output;
     }
 
-    private static String encrypt2dArray(String input,char[] key){
+    private static String decrypt2dArray(String input,char[] key){
         String output = input;
         int xLength = (int)Math.ceil(Math.sqrt(input.length()));
         int yLength = xLength;
@@ -82,25 +81,10 @@ public class encryptBits
         char[] output = new char[input.length];
         for(int num2 = 0; num2 < input.length; num2++){
             int modifier = 0;
-            while(num2+num-modifier >= input.length){
+            while(num2-num+modifier < 0){
                 modifier += input.length;
             }
-            output[num2] = input[num2+num-modifier];
-        }
-        return output;
-    }
-
-    private static String randomKey(){
-        String output = "";
-        int num = 0;
-        for(int x = 0; x < 12; x++){
-            num = (int)Math.ceil(Math.random()*9);
-            output += num;
-        }
-
-        for(int x = 0; x < 6; x++){
-            num = (int)Math.floor(Math.random()*2);
-            output += num;
+            output[num2] = input[num2-num+modifier];
         }
         return output;
     }
