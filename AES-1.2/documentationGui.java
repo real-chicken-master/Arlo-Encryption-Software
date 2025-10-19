@@ -32,7 +32,7 @@ public class documentationGui extends JFrame{
 
         JFrame frame = new JFrame("documentation-AES-"+ globalValues.version);
 
-        frame.getContentPane().setPreferredSize(new Dimension(500,500));
+        frame.getContentPane().setPreferredSize(new Dimension(500,600));
 
         frame.getContentPane().setBackground(backgroundColor);
         frame.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -46,6 +46,7 @@ public class documentationGui extends JFrame{
         frame.setVisible(true);
 
         JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panel1.setPreferredSize(new Dimension(500, 21)); 
         JLabel versionText = new JLabel("version: " + globalValues.version);
         panel1.add(versionText);
         frame.add(panel1);
@@ -55,9 +56,11 @@ public class documentationGui extends JFrame{
         panelT1.setPreferredSize(new Dimension(500, 21)); 
         panelT1.add(Ttext1);
         frame.add(panelT1);
+
         //encrypt string documentation
         JPanel panelE1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel Etext1 = new JLabel("to encrypt:");
+        JLabel Etext1 = new JLabel(" to encrypt:");
+
         panelE1.setPreferredSize(new Dimension(500, 21)); 
         panelE1.add(Etext1);
 
@@ -88,7 +91,7 @@ public class documentationGui extends JFrame{
 
         //decrypt string documentation
         JPanel panelD1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        JLabel Dtext1 = new JLabel("to decrypt:");
+        JLabel Dtext1 = new JLabel(" to decrypt:");
         panelD1.setPreferredSize(new Dimension(500, 21)); 
         panelD1.add(Dtext1);
 
@@ -118,6 +121,75 @@ public class documentationGui extends JFrame{
         frame.add(panelD4);
         frame.add(panelD5);
         
+        //bits
+
+        JPanel panelT2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel Ttext2 = new JLabel("Bits:");
+        panelT2.setPreferredSize(new Dimension(500, 21)); 
+        panelT2.add(Ttext2);
+        frame.add(panelT2);
+        //encrypt bits documentation
+        JPanel panelBE1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel EtextB1 = new JLabel(" to encrypt:");
+        panelBE1.setPreferredSize(new Dimension(500, 21)); 
+        panelBE1.add(EtextB1);
+
+        JPanel panelBE2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel EtextB2 = new JLabel("    step 1: enter bits");
+        panelBE2.setPreferredSize(new Dimension(500, 21)); 
+        panelBE2.add(EtextB2);
+
+        JPanel panelBE3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel EtextB3 = new JLabel("    step 2: click submit");
+        panelBE3.setPreferredSize(new Dimension(500, 21)); 
+        panelBE3.add(EtextB3);
+
+        JPanel panelBE4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel EtextB4 = new JLabel("    step 3: take note of your key and encrypted string");
+        panelBE4.setPreferredSize(new Dimension(500, 21)); 
+        panelBE4.add(EtextB4);
+
+        JPanel panelBE5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel EtextB5 = new JLabel("    step 4: done!!");
+        panelBE5.setPreferredSize(new Dimension(500, 21)); 
+        panelBE5.add(EtextB5);
+
+        frame.add(panelBE1);
+        frame.add(panelBE2);
+        frame.add(panelBE3);
+        frame.add(panelBE4);
+
+        //decrypt bits documentation
+        JPanel panelBD1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel DtextB1 = new JLabel("to decrypt:");
+        panelBD1.setPreferredSize(new Dimension(500, 21)); 
+        panelBD1.add(DtextB1);
+
+        JPanel panelBD2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel DtextB2 = new JLabel("    step 1: enter your key and bits");
+        panelBD2.setPreferredSize(new Dimension(500, 21)); 
+        panelBD2.add(DtextB2);
+
+        JPanel panelBD3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel DtextB3 = new JLabel("    step 2: click submit");
+        panelBD3.setPreferredSize(new Dimension(500, 21)); 
+        panelBD3.add(DtextB3);
+
+        JPanel panelBD4 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel DtextB4 = new JLabel("    step 3: take note of your decrypted string");
+        panelBD4.setPreferredSize(new Dimension(500, 21)); 
+        panelBD4.add(DtextB4);
+
+        JPanel panelBD5 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JLabel DtextB5 = new JLabel("    step 3: done!!");
+        panelBD5.setPreferredSize(new Dimension(500, 21)); 
+        panelBD5.add(DtextB5);
+
+        frame.add(panelBD1);
+        frame.add(panelBD2);
+        frame.add(panelBD3);
+        frame.add(panelBD4);
+        frame.add(panelBD5);
         
         frame.pack();
     }
