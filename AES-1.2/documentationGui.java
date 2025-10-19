@@ -55,7 +55,7 @@ public class documentationGui extends JFrame{
         panelT1.setPreferredSize(new Dimension(500, 21)); 
         panelT1.add(Ttext1);
         frame.add(panelT1);
-        //encrypt documentation
+        //encrypt string documentation
         JPanel panelE1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel Etext1 = new JLabel("to encrypt:");
         panelE1.setPreferredSize(new Dimension(500, 21)); 
@@ -86,7 +86,7 @@ public class documentationGui extends JFrame{
         frame.add(panelE3);
         frame.add(panelE4);
 
-        //decrypt documentation
+        //decrypt string documentation
         JPanel panelD1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
         JLabel Dtext1 = new JLabel("to decrypt:");
         panelD1.setPreferredSize(new Dimension(500, 21)); 
@@ -117,6 +117,8 @@ public class documentationGui extends JFrame{
         frame.add(panelD3);
         frame.add(panelD4);
         frame.add(panelD5);
+        
+        
         frame.pack();
     }
 }

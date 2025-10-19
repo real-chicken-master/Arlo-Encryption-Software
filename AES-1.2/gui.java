@@ -51,27 +51,28 @@ public class gui extends JFrame{
         frame.add(versionText);
         
         JPanel panel1 = new JPanel();
+        panel1.setPreferredSize(new Dimension(500, 50));
         JLabel introText = new JLabel("welcome to Arlo encryption software ");
         panel1.add(introText);
-        JButton buttonDoc = new JButton("documentation");
-        panel1.add(buttonDoc);
-        buttonDoc.addActionListener(new ActionListener() {
+        JButton buttonStringDecryptoc = new JButton("documentation");
+        panel1.add(buttonStringDecryptoc);
+        buttonStringDecryptoc.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new documentationGui();
                 }
             });
 
         JPanel panel2 = new JPanel();
-        panel2.setPreferredSize(new Dimension(500,500));
-        JButton buttonE = new JButton("encrypt");
-        buttonE.addActionListener(new ActionListener() {
+        panel2.setPreferredSize(new Dimension(500, 50));
+        JButton buttonStringEncrypt = new JButton("encrypt string");
+        buttonStringEncrypt.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new encryptStringGui();
                 }
             });
-        panel2.add(buttonE);
-        JButton buttonD = new JButton("decrypt");
-        buttonD.addActionListener(new ActionListener() {
+        panel2.add(buttonStringEncrypt);
+        JButton buttonStringDecrypt = new JButton("decrypt string");
+        buttonStringDecrypt.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     try
                     {
@@ -85,10 +86,37 @@ public class gui extends JFrame{
                     catch (java.io.IOException ioe){}
                 }
             });
-        panel2.add(buttonD);
-
+        panel2.add(buttonStringDecrypt);
+        
+        JPanel panel3 = new JPanel();
+        panel3.setPreferredSize(new Dimension(500, 50));
+        JButton buttonE = new JButton("encrypt bits");
+        buttonE.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new encryptBitsGui();
+                }
+            });
+        panel3.add(buttonE);
+        JButton buttonD = new JButton("decrypt bits");
+        buttonD.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    try
+                    {
+                        try
+                        {
+                            new decryptBitsGui();
+                        }
+                        catch (java.awt.datatransfer.UnsupportedFlavorException ufe)
+                        {}
+                    }
+                    catch (java.io.IOException ioe){}
+                }
+            });
+        panel3.add(buttonD);
+        
         frame.add(panel1);
         frame.add(panel2);
+        frame.add(panel3);
         frame.pack();
     }
 
