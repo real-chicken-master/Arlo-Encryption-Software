@@ -126,6 +126,7 @@ public class encryptBitsGui extends JFrame
     }
 
     boolean validinput(String input){
+        
          char[] inputArray = (input.toLowerCase()).toCharArray();
         for(int num = 0; num < inputArray.length; num++){
             boolean validChar = false;
