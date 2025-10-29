@@ -121,12 +121,51 @@ public class decryptBitsGui extends JFrame
             });
         panel4.add(submitButton);
 
+        JPanel panel6 = new JPanel();
+        JLabel stringToBitsText = new JLabel("enter string below to convert to bits");
+        panel6.add(stringToBitsText);
+
+        JPanel panel7 = new JPanel();
+        JTextField enterBitsField= new JTextField(30);
+        panel7.add(enterBitsField);
+
+        JButton copyButton3 = new JButton("paste");
+        copyButton3.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                    Transferable contents = clipboard.getContents(null);
+                    try{
+                        enterBitsField.setText((String)contents.getTransferData(DataFlavor.stringFlavor));}
+                    catch(Exception a){
+                        enterBitsField.setText(a.toString());
+                    }
+                }
+            });
+        panel7.add(copyButton3);
+
+        JPanel panel8 = new JPanel();
+        JButton submitBitsButton = new JButton("Submit");
+        submitBitsButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent a) {
+                    String string = enterBitsField.getText();
+                    try{
+                        string = BitsToString.BitsToString(string);
+                    }catch(Exception e){
+                        string = "invalid string";
+                    }
+                    enterBitsField.setText(string);
+                }
+            });
+
+        panel8.add(submitBitsButton);
         frame.add(panel1);
         frame.add(panel3);
         frame.add(panel2);
         frame.add(panel4);
         frame.add(panel5);  
-
+        frame.add(panel6); 
+        frame.add(panel7); 
+        frame.add(panel8); 
         frame.pack();
     }
 

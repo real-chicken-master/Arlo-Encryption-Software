@@ -118,10 +118,49 @@ public class encryptBitsGui extends JFrame
                     stringTextField.setText(output[0].toLowerCase());
                 }
             });
+            
+        
+        JPanel panel5 = new JPanel();
+        JLabel stringToBitsText = new JLabel("enter string below to convert to bits");
+        panel5.add(stringToBitsText);
+            
+        JPanel panel6 = new JPanel();
+        JTextField enterBitsField= new JTextField(30);
+        panel6.add(enterBitsField);
+        
+        JButton copyButton3 = new JButton("Copy");
+        copyButton3.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+
+                    StringSelection stringSelection = new StringSelection(enterBitsField.getText());
+
+                    Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+
+                    clipboard.setContents(stringSelection, null);
+                }
+            });
+        panel6.add(copyButton3);
+
+        JPanel panel7 = new JPanel();
+        JButton submitBitsButton = new JButton("Submit");
+        submitBitsButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    String string = enterBitsField.getText();
+                    string = StringToBits.StringToBits(string);
+                    enterBitsField.setText(string);
+                }
+            });
+        
+        
+        panel7.add(submitBitsButton);
+            
         frame.add(panel1);
         frame.add(panel2);
         frame.add(panel3);
         frame.add(panel4);
+        frame.add(panel5);
+        frame.add(panel6);
+        frame.add(panel7);
         frame.pack();
     }
 

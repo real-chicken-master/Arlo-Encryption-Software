@@ -25,7 +25,7 @@ public class encryptBits
             if(key[num]=='1'){
                 if(temparray[tempnum] == '0'){
                     temparray[tempnum] = '1';
-                }else{
+                }else if(temparray[tempnum] == '1'){
                     temparray[tempnum] = '0';
                 }
 
@@ -70,7 +70,7 @@ public class encryptBits
         output = "";
         for(int x = 0; x < xLength; x++){
             for(int y = 0; y < yLength; y++){
-                if(tempArray2[x][y] == '1' || tempArray2[x][y] == '0'){
+                if(tempArray2[x][y] == '1' || tempArray2[x][y] == '0' || tempArray2[x][y] == ' '){
                     output += tempArray2[x][y];
                 }
             }
