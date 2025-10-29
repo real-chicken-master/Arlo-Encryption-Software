@@ -109,7 +109,11 @@ public class decryptBitsGui extends JFrame
                 public void actionPerformed(ActionEvent e) {
                     String[] input = {BitTextField.getText(),keyTextField.getText()};
                     if(validKey(input[1])){
-                        outputTextField.setText(decryptBits.decryptBits(input));
+                        if(validinput(input[0])){
+                            outputTextField.setText(decryptBits.decryptBits(input));
+                        }else{
+                            outputTextField.setText("invalid input");
+                        }
                     }else{
                         outputTextField.setText("invalid key");
                     }
@@ -124,6 +128,24 @@ public class decryptBitsGui extends JFrame
         frame.add(panel5);  
 
         frame.pack();
+    }
+
+    boolean validinput(String input){
+
+        char[] inputArray = (input.toLowerCase()).toCharArray();
+        for(int num = 0; num < inputArray.length; num++){
+            boolean validChar = false;
+            if(inputArray[num] == ' '){
+                validChar = true;
+            }
+            if(inputArray[num] == '1' || inputArray[num] == '0'){
+                validChar=true;
+            }
+            if(!validChar){
+                return false;
+            }
+        }
+        return true;
     }
 
     boolean validKey(String key){

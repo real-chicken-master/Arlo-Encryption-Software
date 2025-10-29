@@ -25,33 +25,53 @@ public class hashString
         char[] array = input.toCharArray();
         char[] keyarray = key.toCharArray();
         for(int charnum =0; charnum < array.length ;charnum++){
-            int num = 0;
+            int num = (int)charnum%4;
+            System.out.println((int)array[charnum]);
             for(int keynum = 0; keynum < keyarray.length; keynum++){
-                num ++;
-                if(num == 2){
-                    num = 0;
+                num++;
+                if(num>4){
+                    num = 1;
                 }
                 switch(num){
-                    case 0:
-                        {   
+                    case 1:
+                        {
                             array[charnum] = (char)(array[charnum] + keyarray[keynum]);
                         }
-                    case 1:
-                        {   
+                    case 2:
+                        {
                             array[charnum] = (char)(array[charnum] - keyarray[keynum]);
+                        }
+                    case 3:
+                        {
+                            if(keyarray[keynum]!=0)
+                                array[charnum] = (char)(array[charnum] * keyarray[keynum]);
+                        }
+                    case 4:
+                        {   
+                            if(keyarray[keynum]!=0)
+                                array[charnum] = (char)(array[charnum] / keyarray[keynum]);
                         }
                 }
             }
+            while((int)array[charnum] > 256){
+                array[charnum]-= 256;
+            }
+            while((int)array[charnum] <= 0){
+                array[charnum]+= 256;
+            }
             output += array[charnum];
+            System.out.println((int)array[charnum]);
         }
-        
+
         return output;
     }
 
     private static String get_hash_key(){
         Scanner reader;
-        UUID randomUuid = UUID.randomUUID();
-        String text = randomUuid.toString();
+        String text = "";
+        for(int num = 0; num < 255; num++){
+            text += (int)(Math.random()*9);
+        }
         try 
         {
             File myObj = new File("hashid.txt");
