@@ -64,13 +64,19 @@ public class hashStringGui extends JFrame
 
         panel2.add(submitButton);
 
-
         JPanel panel4 = new JPanel();
-        JLabel stringText = new JLabel("your hash is are:");
+        JLabel stringText = new JLabel("your hash is:");
         panel4.add(stringText);
 
         JTextField stringTextField= new JTextField(output,30);
         panel4.add(stringTextField);
+
+        JPanel panel5 = new JPanel();
+        JPanel panel3 = new JPanel();
+        JLabel paddingText = new JLabel("enter the length of the output");
+        panel5.add(paddingText);
+        JTextField paddingTextField= new JTextField(30);
+        panel3.add(paddingTextField);
 
         JButton copyButton2 = new JButton("Copy");
         copyButton2.addActionListener(new ActionListener() {
@@ -88,9 +94,13 @@ public class hashStringGui extends JFrame
         submitButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     input = enterTextField.getText();
+                    int padding = 0;
+                    try{
+                        padding = Integer.parseInt(paddingTextField.getText());
+                    }catch(Exception E){}
                     String[] test = {"",""};
                     if(validinput(input)){
-                        output = hashString.hashString(input);
+                        output = hashString.hashString(input,padding);
                     }else{
                         String temp = "invaild input";
                         output = temp;
@@ -98,13 +108,19 @@ public class hashStringGui extends JFrame
                     stringTextField.setText(output.toLowerCase());
                 }
             });
+
         frame.add(panel1);
         frame.add(panel2);
+        frame.add(panel5);
+        frame.add(panel3);
         frame.add(panel4);
         frame.pack();
     }
 
     boolean validinput(String input){
+        if(input.length() == 0){
+            return false;
+        }
         return true;
     }
 }
