@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.target=globalValues
+comment0.text=\r\n\ some\ global\ values\ such\ as\ color.\r\n\ this\ is\ to\ use\ the\ same\ color\ pallet\ across\ the\ whole\ gui.\r\n\r\n\ @author\ (Arlo\ Kennedy)\r\n\ @version\ (2.1)\r\n
+comment1.params=
+comment1.target=globalValues()
+numComments=2
