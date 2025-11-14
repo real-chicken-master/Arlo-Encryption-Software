@@ -22,7 +22,7 @@ import java.awt.datatransfer.StringSelection;
  * @author (Arlo Kennedy)
  * @version (2.1)
  */
-public class hashStringGui extends JFrame
+public class hashStringGui extends GuiBase
 {
     Color backgroundColor = globalValues.backgroundColor;
     Color textColor = globalValues.textColor; 

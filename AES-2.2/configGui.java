@@ -11,7 +11,6 @@ public class configGui extends GuiBase
 {
     // instance variables - replace the example below with your own
     private int x;
-    JFrame frame = new JFrame("AES-"+ globalValues.version);
     Color backgroundColor = globalValues.backgroundColor;
     Color textColor = globalValues.textColor; 
     Color buttonColor = globalValues.buttonColor;
@@ -30,7 +29,9 @@ public class configGui extends GuiBase
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-
+        
+        System.out.println(frame);
+        
         frame.setResizable(false);
 
         frame.toFront();

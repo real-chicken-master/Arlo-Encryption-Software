@@ -9,24 +9,12 @@ import javax.swing.JFrame;
 public class GuiBase extends JFrame
 {
     // instance variables - replace the example below with your own
-    Class self = this.getClass();
+    JFrame frame = new JFrame("AES-"+ globalValues.version);
     /**
      * Constructor for objects of class GuiBase
      */
     public GuiBase()
     {   
-        System.out.println("test2");
-        GuiManager.registerFrame(self);
-    }
-
-    public void refresh(){
-        System.out.println("test");
-        try
-        {
-            self.getDeclaredConstructor().newInstance();
-        }
-        catch (Exception e){}
-        GuiManager.unregisterFrame(self);
-        this.dispose();
+        GuiManager.registerFrame(frame);
     }
 }

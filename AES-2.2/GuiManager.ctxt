@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=GuiManager
 comment1.params=frame
-comment1.target=void\ registerFrame(java.lang.Class)
+comment1.target=void\ registerFrame(javax.swing.JFrame)
 comment2.params=frame
-comment2.target=void\ unregisterFrame(java.lang.Class)
+comment2.target=void\ unregisterFrame(javax.swing.JFrame)
 comment3.params=
 comment3.target=void\ refreshAllGuis()
 numComments=4

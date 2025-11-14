@@ -16,7 +16,7 @@ import java.awt.FlowLayout;
  * @author (Arlo Kennedy)
  * @version (2.1)
  */
-public class documentationGui extends JFrame{
+public class documentationGui extends GuiBase{
     Color backgroundColor = globalValues.backgroundColor;
     Color textColor = globalValues.textColor; 
     Color buttonColor = globalValues.buttonColor;

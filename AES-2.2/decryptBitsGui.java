@@ -24,7 +24,7 @@ import java.awt.datatransfer.DataFlavor;
  * @author (Arlo Kennedy)
  * @version (2.1    )
  */
-public class decryptBitsGui extends JFrame
+public class decryptBitsGui extends GuiBase
 {
     Color backgroundColor = globalValues.backgroundColor;
     Color textColor = globalValues.textColor; 
