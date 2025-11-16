@@ -20,21 +20,8 @@ public class gui extends GuiBase{
     /**
      * Constructor for objects of class gui
      */
-    Color backgroundColor = globalValues.backgroundColor;
-    Color textColor = globalValues.textColor; 
-    Color buttonColor = globalValues.buttonColor;
-    Color buttonTextColor = globalValues.buttonTextColor;
     public gui()
     {   
-        UIManager.put("Button.background", buttonColor);
-        UIManager.put("Panel.background", backgroundColor);
-        UIManager.put("Frame.background", backgroundColor);
-        UIManager.put("Label.foreground", textColor);
-        UIManager.put("Button.foreground", buttonTextColor);
-        UIManager.put("TextField.foreground", textColor);
-
-        JFrame frame = new JFrame("AES-"+ globalValues.version);
-
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
         frame.setLayout(new FlowLayout());
@@ -54,11 +41,19 @@ public class gui extends GuiBase{
         panel1.setPreferredSize(new Dimension(500, 50));
         JLabel introText = new JLabel("welcome to Arlo encryption software ");
         panel1.add(introText);
-        JButton buttonStringDecryptoc = new JButton("documentation");
-        panel1.add(buttonStringDecryptoc);
-        buttonStringDecryptoc.addActionListener(new ActionListener() {
+        JButton buttonDocumentation = new JButton("documentation");
+        panel1.add(buttonDocumentation);
+        buttonDocumentation.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     new documentationGui();
+                }
+            });
+            
+        JButton buttonConfig = new JButton("settings");
+        panel1.add(buttonConfig);
+        buttonConfig.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    new configGui();
                 }
             });
 

@@ -8,4 +8,6 @@ comment2.params=panel\ type
 comment2.target=void\ addSliders(javax.swing.JPanel,\ java.lang.String)
 comment3.params=e
 comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
-numComments=4
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5

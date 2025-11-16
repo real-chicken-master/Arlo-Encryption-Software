@@ -26,20 +26,7 @@ import java.awt.datatransfer.DataFlavor;
  */
 public class decryptBitsGui extends GuiBase
 {
-    Color backgroundColor = globalValues.backgroundColor;
-    Color textColor = globalValues.textColor; 
-    Color buttonColor = globalValues.buttonColor;
-    Color buttonTextColor = globalValues.buttonTextColor;
     public decryptBitsGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
-        UIManager.put("Button.background", buttonColor);
-        UIManager.put("Panel.background", backgroundColor);
-        UIManager.put("Frame.background", backgroundColor);
-        UIManager.put("Label.foreground", textColor);
-        UIManager.put("Button.foreground", buttonTextColor);
-        UIManager.put("TextField.foreground", textColor);
-
-        JFrame frame = new JFrame("decrypt-AES-"+ globalValues.version);
-
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
         frame.getContentPane().setBackground(backgroundColor);

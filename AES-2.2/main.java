@@ -12,6 +12,7 @@ public class main
     }
 
     public static void main(String[] args) {
+        new GuiManager();
         try
         {
             new globalValues();
@@ -27,6 +28,5 @@ public class main
         {
             JOptionPane.showMessageDialog(null, "AES quit unexpectedly");
         }
-        new GuiManager();
     }
 }

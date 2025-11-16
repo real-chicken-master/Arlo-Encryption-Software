@@ -29,9 +29,7 @@ public class configGui extends GuiBase
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        
-        System.out.println(frame);
-        
+
         frame.setResizable(false);
 
         frame.toFront();
@@ -106,5 +104,16 @@ public class configGui extends GuiBase
             });
         applyPanel.add(applyButton);
         panel.add(applyPanel);
+
+        JPanel savePanel = new JPanel();
+        savePanel.setPreferredSize(new Dimension(500,50));
+        JButton saveButton = new JButton("save");
+        saveButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    globalValues.save();
+                }
+            });
+        savePanel.add(saveButton);
+        panel.add(savePanel);
     }
 }
