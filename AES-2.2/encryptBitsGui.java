@@ -100,6 +100,7 @@ public class encryptBitsGui extends GuiBase
                     }else{
                         String[] temp = {"invaild input","invaild input"};
                         output = temp;
+                        JOptionPane.showMessageDialog(null, "invalid inout");
                     }
                     keyTextField.setText(output[1]);
                     stringTextField.setText(output[0].toLowerCase());

@@ -100,9 +100,11 @@ public class decryptBitsGui extends GuiBase
                             outputTextField.setText(decryptBits.decryptBits(input));
                         }else{
                             outputTextField.setText("invalid input");
+                            JOptionPane.showMessageDialog(null, "invalid input");
                         }
                     }else{
                         outputTextField.setText("invalid key");
+                        JOptionPane.showMessageDialog(null, "invalid key");
                     }
                 }
             });
@@ -139,6 +141,7 @@ public class decryptBitsGui extends GuiBase
                         string = BitsToString.BitsToString(string);
                     }catch(Exception e){
                         string = "invalid string";
+                        JOptionPane.showMessageDialog(null, "invalid string");
                     }
                     enterBitsField.setText(string);
                 }

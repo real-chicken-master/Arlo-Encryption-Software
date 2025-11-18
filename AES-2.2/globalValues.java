@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.nio.file.*;
 import java.nio.file.Path;
 import java.util.List;
+import java.io.IOException;
+import java.io.FileWriter;
 
 /**
  * some global values such as color.
@@ -67,27 +69,53 @@ public class globalValues
     }
 
     public static void save(){
-        Path path = Paths.get("your_file.txt");
+        Path path = Paths.get(filePath);
         try{
             List<String> lines = Files.readAllLines(path);
+            FileWriter writer = new FileWriter(filePath);
             for(int num = 0; num < lines.size();num++){
-                String nextLine = "";
+                String nextLine = lines.get(num);
+                String newLineContent = nextLine;
+                String output = newLineContent;
                 if(!nextLine.contains("//")){
-                    String newLineContent = nextLine;
                     if(nextLine.contains("background") && nextLine.contains("=")){
-                        
+                        int red = backgroundColor.getRed();
+                        int green = backgroundColor.getGreen();
+                        int blue = backgroundColor.getBlue();
+                        String[] splitLine = nextLine.split("\\(");
+                        splitLine[1] = (String)("(" + red + "," + blue + ","+ green + ")");
+                        output = splitLine[0] + splitLine[1];
                     }
                     if(nextLine.contains("text") && nextLine.contains("=")){
-
+                        int red = textColor.getRed();
+                        int green = textColor.getGreen();
+                        int blue = textColor.getBlue();
+                        String[] splitLine = nextLine.split("\\(");
+                        splitLine[1] = (String)("(" + red + "," + blue + ","+ green + ")");
+                        output = splitLine[0] + splitLine[1];
                     }
                     if(nextLine.contains("buttonBackground") && nextLine.contains("=")){
-
+                        int red = buttonColor.getRed();
+                        int green = buttonColor.getGreen();
+                        int blue = buttonColor.getBlue();
+                        String[] splitLine = nextLine.split("\\(");
+                        splitLine[1] = (String)("(" + red + "," + blue + ","+ green + ")");
+                        output = splitLine[0] + splitLine[1];
                     }
                     if(nextLine.contains("buttonText") && nextLine.contains("=")){
-
+                        int red = buttonTextColor.getRed();
+                        int green = buttonTextColor.getGreen();
+                        int blue = buttonTextColor.getBlue();
+                        String[] splitLine = nextLine.split("\\(");
+                        splitLine[1] = (String)("(" + red + "," + blue + ","+ green + ")");
+                        output = splitLine[0] + splitLine[1];
                     }
                 }
+                writer.write(output + "\n");
             }
-        }catch(Exception e){}
+            writer.close();
+        }catch(Exception e){
+        System.out.println(e);
+        }
     }
 }

@@ -18,6 +18,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
 import java.awt.datatransfer.DataFlavor;
+import javax.swing.JOptionPane;
 /**
  * this is the gui that handles the inputs and outputs of the decrypt class.
  *
@@ -99,6 +100,7 @@ public class decryptStringGui extends GuiBase
                         outputTextField.setText(decryptString.decryptString(input));
                     }else{
                         outputTextField.setText("invalid key");
+                        JOptionPane.showMessageDialog(null, "invalid key");
                     }
                 }
             });

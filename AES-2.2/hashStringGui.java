@@ -91,6 +91,7 @@ public class hashStringGui extends GuiBase
                     }else{
                         String temp = "invaild input";
                         output = temp;
+                        JOptionPane.showMessageDialog(null, "invalid input");
                     }
                     stringTextField.setText(output.toLowerCase());
                 }

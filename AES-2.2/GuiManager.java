@@ -27,5 +27,6 @@ public class GuiManager {
         {
             JOptionPane.showMessageDialog(null, "AES quit unexpectedly");
         }
+        new configGui();
     }
 }

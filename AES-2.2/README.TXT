@@ -3,9 +3,9 @@ This is the project README file. it contains the information to run the
 program and information about the creator.
 ------------------------------------------------------------------------
 
-PROJECT TITLE: Kennedy encryption software.
+PROJECT TITLE: Arlo Encryption Software.
 PURPOSE OF PROJECT: to encrypt a string with hopfully unbreakable encyption.
-VERSION or DATE: 2.1
+VERSION or DATE: 2.2
 HOW TO START THIS PROJECT: run the main function
 AUTHORS: Arlo Kennedy
 USER INSTRUCTIONS:
