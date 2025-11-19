@@ -27,6 +27,8 @@ public class GuiBase extends JFrame
         UIManager.put("Label.foreground", textColor);
         UIManager.put("Button.foreground", buttonTextColor);
         UIManager.put("TextField.foreground", textColor);
+        UIManager.put("Slider.background", backgroundColor);
+        UIManager.put("Slider.trackColor", Color.BLACK);
         frame = new JFrame("AES-"+ globalValues.version);
         GuiManager.registerFrame(frame);
     }

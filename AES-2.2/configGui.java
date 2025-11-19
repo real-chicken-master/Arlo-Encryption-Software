@@ -20,12 +20,6 @@ public class configGui extends GuiBase
      */
     public configGui()
     {   
-        UIManager.put("Button.background", buttonColor);
-        UIManager.put("Panel.background", backgroundColor);
-        UIManager.put("Frame.background", backgroundColor);
-        UIManager.put("Label.foreground", textColor);
-        UIManager.put("Button.foreground", buttonTextColor);
-        UIManager.put("TextField.foreground", textColor);
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -92,10 +86,29 @@ public class configGui extends GuiBase
 
     private void addSliders(JPanel panel, String type)
     {   
+        int redNum = 175;
+        int blueNum = 175;
+        int greenNum = 175;
+
+        if(type == "textColor"){
+            redNum = globalValues.textColor.getRed();
+            blueNum = globalValues.textColor.getBlue();
+            greenNum = globalValues.textColor.getGreen();
+        }else if(type == "buttonColor"){
+            redNum = globalValues.buttonColor.getRed();
+            blueNum = globalValues.buttonColor.getBlue();
+            greenNum = globalValues.buttonColor.getGreen();
+        }else if(type == "backgroundColor"){
+            redNum = globalValues.backgroundColor.getRed();
+            blueNum = globalValues.backgroundColor.getGreen();
+            greenNum = globalValues.backgroundColor.getBlue();
+        }
+
         JPanel redPanel = new JPanel();
         redPanel.add(new JLabel("red"));
         redPanel.setPreferredSize(new Dimension(500,50));
         JSlider red = new JSlider();
+        red.setValue((int)Math.round(redNum/2.55));
         redPanel.add(red);
         panel.add(redPanel);
 
@@ -103,6 +116,7 @@ public class configGui extends GuiBase
         greenPanel.add(new JLabel("green"));
         greenPanel.setPreferredSize(new Dimension(500,50));
         JSlider green = new JSlider();
+        green.setValue((int)Math.round(greenNum/2.55));
         greenPanel.add(green);
         panel.add(greenPanel);
 
@@ -110,6 +124,7 @@ public class configGui extends GuiBase
         bluePanel.add(new JLabel("blue"));
         bluePanel.setPreferredSize(new Dimension(500,50));
         JSlider blue = new JSlider();
+        blue.setValue((int)Math.round(blueNum/2.55));
         bluePanel.add(blue);
         panel.add(bluePanel);
 
