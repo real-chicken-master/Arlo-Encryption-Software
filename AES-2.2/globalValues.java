@@ -68,6 +68,13 @@ public class globalValues
         reader.close();
     }
 
+    public static void reset(){
+        backgroundColor = new Color(200,230,230);
+        textColor = new Color(0,0,0);
+        buttonColor = new Color(210,210,210);
+        buttonTextColor = new Color(0,0,0);
+    }
+
     public static void save(){
         Path path = Paths.get(filePath);
         try{
@@ -115,7 +122,7 @@ public class globalValues
             }
             writer.close();
         }catch(Exception e){
-        System.out.println(e);
+            System.out.println(e);
         }
     }
 }

@@ -35,7 +35,31 @@ public class configGui extends GuiBase
         frame.toFront();
 
         frame.setVisible(true);
-
+        frame.setLayout(new GridBagLayout());
+        JPanel ButtonsPanel = new JPanel();
+        ButtonsPanel.setPreferredSize(new Dimension(500,50));
+        JButton saveButton = new JButton("save");
+        saveButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    globalValues.save();
+                }
+            });
+        ButtonsPanel.add(saveButton);
+        JButton resetButton = new JButton("reset");
+        resetButton.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    globalValues.reset();
+                    GuiManager.refreshAllGuis();
+                }
+            });
+        ButtonsPanel.add(resetButton);
+        GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.ipady = 10; 
+        c.ipadx = 10; 
+        frame.add(ButtonsPanel,c);
         // Create a JTabbedPane, which will hold the tabs
         JTabbedPane tabPanel = new JTabbedPane();
         // Create the first tab (page1) and add a JLabel to it
@@ -55,7 +79,13 @@ public class configGui extends GuiBase
         tabPanel.addTab("text color", page2);
         tabPanel.addTab("button color", page3);
 
-        frame.add(tabPanel);
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.gridx = 0;
+        c.gridy = 1;
+        c.ipady = 400; 
+        c.ipadx = 0;
+        c.weightx = 1.0;  
+        frame.add(tabPanel,c);
 
         frame.pack();
     }
@@ -104,16 +134,5 @@ public class configGui extends GuiBase
             });
         applyPanel.add(applyButton);
         panel.add(applyPanel);
-
-        JPanel savePanel = new JPanel();
-        savePanel.setPreferredSize(new Dimension(500,50));
-        JButton saveButton = new JButton("save");
-        saveButton.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent e) {
-                    globalValues.save();
-                }
-            });
-        savePanel.add(saveButton);
-        panel.add(savePanel);
     }
 }
