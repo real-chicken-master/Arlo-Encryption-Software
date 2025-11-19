@@ -7,23 +7,34 @@ import javax.swing.JOptionPane;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 public class GuiManager {
+    static Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+    static Dimension screenSize = toolkit.getScreenSize();
+    static double screenWidth = screenSize.getWidth();
+    static double screenHeight = screenSize.getHeight();
+
+    static int arrayX = (int)screenWidth/500;
+    static int arrayY = (int)screenWidth/500;
     private static final List<JFrame> openFrames = new ArrayList<>();
-
+    static public boolean array[][] = new boolean[arrayX][arrayY];
     public static void registerFrame(JFrame frame) {
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
-
-        Dimension screenSize = toolkit.getScreenSize();
-
-        double screenWidth = screenSize.getWidth();
-        double screenHeight = screenSize.getHeight();
-        int x = 500*openFrames.size()-8;
-        if(x+500 <= screenWidth){
-            frame.setLocation(x, 0);
-        }else{
-            if(500 <= screenHeight){
-                frame.setLocation(0, 500);
+        int placeX = 0;
+        int placeY = 0;
+        for(int num = 0; num < arrayX;num++){
+            for(int num2 = 0; num2 < arrayY;num2++){
+                if(!array[num2][num]){
+                    array[num2][num] = true;
+                    placeX = num;
+                    placeY = num2;
+                    break;
+                }
             }
         }
+        System.out.println(placeX);
+        System.out.println(placeY);
+        int x = 500*placeX;
+        int y = 500*placeY;
+        frame.setLocation(x, y);
         openFrames.add(frame);
     }
 
