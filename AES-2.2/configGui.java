@@ -21,7 +21,7 @@ public class configGui extends GuiBase
     public configGui()
     {   
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         frame.setResizable(false);

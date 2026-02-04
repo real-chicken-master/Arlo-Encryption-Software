@@ -29,7 +29,7 @@ public class decryptStringGui extends GuiBase
 {
     public decryptStringGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.getContentPane().setBackground(backgroundColor);
 
         frame.setLayout(new FlowLayout());

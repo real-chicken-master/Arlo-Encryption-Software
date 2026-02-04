@@ -28,7 +28,7 @@ public class encryptStringGui extends GuiBase
     String[] output = {"N/A","N/A"};
     public encryptStringGui(){
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.setLayout(new FlowLayout());
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);

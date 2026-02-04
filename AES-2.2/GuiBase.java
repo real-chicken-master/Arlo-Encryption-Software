@@ -30,6 +30,5 @@ public class GuiBase extends JFrame
         UIManager.put("Slider.background", backgroundColor);
         UIManager.put("Slider.trackColor", Color.BLACK);
         frame = new JFrame("AES-"+ globalValues.version);
-        GuiManager.registerFrame(frame);
     }
 }

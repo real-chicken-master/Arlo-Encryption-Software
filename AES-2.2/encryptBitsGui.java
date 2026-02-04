@@ -28,7 +28,7 @@ public class encryptBitsGui extends GuiBase
     String[] output = {"N/A","N/A"};
     public encryptBitsGui(){
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.setLayout(new FlowLayout());
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -106,16 +106,15 @@ public class encryptBitsGui extends GuiBase
                     stringTextField.setText(output[0].toLowerCase());
                 }
             });
-            
-        
+
         JPanel panel5 = new JPanel();
         JLabel stringToBitsText = new JLabel("enter string below to convert to bits");
         panel5.add(stringToBitsText);
-            
+
         JPanel panel6 = new JPanel();
         JTextField enterBitsField= new JTextField(30);
         panel6.add(enterBitsField);
-        
+
         JButton copyButton3 = new JButton("Copy");
         copyButton3.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -138,10 +137,8 @@ public class encryptBitsGui extends GuiBase
                     enterBitsField.setText(string);
                 }
             });
-        
-        
+
         panel7.add(submitBitsButton);
-            
         frame.add(panel1);
         frame.add(panel2);
         frame.add(panel3);
@@ -153,15 +150,15 @@ public class encryptBitsGui extends GuiBase
     }
 
     boolean validinput(String input){
-        
-         char[] inputArray = (input.toLowerCase()).toCharArray();
+
+        char[] inputArray = (input.toLowerCase()).toCharArray();
         for(int num = 0; num < inputArray.length; num++){
             boolean validChar = false;
             if(inputArray[num] == ' '){
                 validChar = true;
             }
             if(inputArray[num] == '1' || inputArray[num] == '0'){
-                    validChar=true;
+                validChar=true;
             }
             if(!validChar){
                 return false;

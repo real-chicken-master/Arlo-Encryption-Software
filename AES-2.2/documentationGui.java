@@ -20,7 +20,7 @@ public class documentationGui extends GuiBase{
     public documentationGui()
     {
         frame.getContentPane().setPreferredSize(new Dimension(500,600));
-
+        GuiManager.registerFrame(frame);
         frame.getContentPane().setBackground(backgroundColor);
         frame.setLayout(new FlowLayout(FlowLayout.LEFT));
 
@@ -107,7 +107,7 @@ public class documentationGui extends GuiBase{
         frame.add(panelD3);
         frame.add(panelD4);
         frame.add(panelD5);
-        
+
         //bits
 
         JPanel panelT2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -177,7 +177,7 @@ public class documentationGui extends GuiBase{
         frame.add(panelBD3);
         frame.add(panelBD4);
         frame.add(panelBD5);
-        
+
         frame.pack();
     }
 }

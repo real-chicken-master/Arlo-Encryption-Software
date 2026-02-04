@@ -24,6 +24,7 @@ public class gui extends GuiBase{
     {   
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
 
+        GuiManager.registerFrame(frame);
         frame.setLayout(new FlowLayout());
 
         frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -36,7 +37,7 @@ public class gui extends GuiBase{
 
         JLabel versionText = new JLabel("version: " + globalValues.version);
         frame.add(versionText);
-        
+
         JPanel panel1 = new JPanel();
         panel1.setPreferredSize(new Dimension(500, 50));
         JLabel introText = new JLabel("welcome to Arlo encryption software ");
@@ -48,7 +49,7 @@ public class gui extends GuiBase{
                     new documentationGui();
                 }
             });
-            
+
         JButton buttonConfig = new JButton("settings");
         panel1.add(buttonConfig);
         buttonConfig.addActionListener(new ActionListener() {
@@ -82,7 +83,7 @@ public class gui extends GuiBase{
                 }
             });
         panel2.add(buttonStringDecrypt);
-        
+
         JPanel panel3 = new JPanel();
         panel3.setPreferredSize(new Dimension(500, 50));
         JButton buttonE = new JButton("encrypt bits");
@@ -108,7 +109,7 @@ public class gui extends GuiBase{
                 }
             });
         panel3.add(buttonD);
-        
+
         frame.add(panel1);
         frame.add(panel2);
         frame.add(panel3);

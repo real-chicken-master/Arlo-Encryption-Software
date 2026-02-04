@@ -28,7 +28,7 @@ public class decryptBitsGui extends GuiBase
 {
     public decryptBitsGui() throws java.io.IOException, java.awt.datatransfer.UnsupportedFlavorException {
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.getContentPane().setBackground(backgroundColor);
 
         frame.setLayout(new FlowLayout());

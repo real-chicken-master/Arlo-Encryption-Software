@@ -28,7 +28,7 @@ public class hashStringGui extends GuiBase
     String output = "N/A";
     public hashStringGui(){
         frame.getContentPane().setPreferredSize(new Dimension(500,500));
-
+        GuiManager.registerFrame(frame);
         frame.setLayout(new FlowLayout());
 
         frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
