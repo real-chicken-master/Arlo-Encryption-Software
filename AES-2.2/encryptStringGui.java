@@ -100,7 +100,6 @@ public class encryptStringGui extends GuiBase
                     }else{
                         String[] temp = {"invaild input","invaild input"};
                         output = temp;
-                        JOptionPane.showMessageDialog(null, "invalid input");
                     }
                     keyTextField.setText(output[1]);
                     stringTextField.setText(output[0].toLowerCase());
@@ -116,10 +115,11 @@ public class encryptStringGui extends GuiBase
 
     boolean validinput(String input){
         if(input.length() == 0){
+            JOptionPane.showMessageDialog(null, "invalid input");
             return false;
         }
         char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-        char[] inputArray = (input.toLowerCase()).toCharArray();
+        char[] inputArray = input.toCharArray();
         for(int num = 0; num < inputArray.length; num++){
             boolean validChar = false;
             if(inputArray[num] == ' '){
@@ -131,6 +131,7 @@ public class encryptStringGui extends GuiBase
                 }
             }
             if(!validChar){
+                JOptionPane.showMessageDialog(null, "please only enter characters from a to z and space");
                 return false;
             }
         }

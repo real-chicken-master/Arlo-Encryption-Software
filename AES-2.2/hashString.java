@@ -17,8 +17,8 @@ public class hashString
         String output = input;
         String key = get_hash_key();
         output = hash(output,key,256);
-        output = rotate(output,key);
-        output = addPadding(output,padding);
+        //output = rotate(output,key);
+        //output = addPadding(output,padding);
         return output;
     }
 
